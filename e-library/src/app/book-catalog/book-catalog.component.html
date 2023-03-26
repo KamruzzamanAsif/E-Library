@@ -1,0 +1,14 @@
+<h1>Book Catalog</h1>
+
+<div id="book-catalog">
+  <div class="book" *ngFor="let book of books.slice(0, catalogSize)">
+    <img [src]="book.imageUrl" alt="{{book.title}}">
+    <h2>{{book.title}}</h2>
+    <p>Author: {{book.author}}</p>
+    <p>Softcopy: {{book.softcopy}}</p>
+    <p>Shelf: {{book.shelf}}</p>
+    <p>Total Quantity: {{book.total_quantity}}</p>
+    <p>Available Quantity: {{book.available_quantity}}</p>
+    <a [href]="book.detailsUrl">View Details</a>
+  </div>
+</div>

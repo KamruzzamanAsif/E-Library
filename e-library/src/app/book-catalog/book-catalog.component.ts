@@ -1,0 +1,21 @@
+import { BookCatalogService } from './../book-catalog.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Book } from '../book';
+
+@Component({
+  selector: 'app-book-catalog',
+  templateUrl: './book-catalog.component.html',
+  styleUrls: ['./book-catalog.component.css']
+})
+export class BookCatalogComponent implements OnInit{
+  constructor(private bookCatalogService: BookCatalogService, private router: Router) {}
+
+  books: Book[] = [];
+  catalogSize: number = 0;
+
+  ngOnInit(): void{
+    this.books = this.bookCatalogService.getBooks();
+    this.catalogSize = this.books.length;
+  }
+}
