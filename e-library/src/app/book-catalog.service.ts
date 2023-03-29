@@ -312,7 +312,19 @@ export class BookCatalogService {
     }
   ];
 
+  bookToBeViewed: Book = new Book();
+
   getBooks(): Book[] {
     return this.books
+  }
+
+  setBookToBeViewed(index: number): void{
+    let book = this.books[index];
+    if(book != null)
+      this.bookToBeViewed = book;
+  }
+
+  getBookToBeViewed(): Book {
+    return this.bookToBeViewed;
   }
 }
