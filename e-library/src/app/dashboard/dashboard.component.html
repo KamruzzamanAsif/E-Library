@@ -1,0 +1,37 @@
+<section id="hero" class="d-flex align-items-center">
+    <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <div class="carousel-container">
+                <div class="row">
+                    <div class="col">
+                        <h2 class="animate__animated animate__fadeInDown">Hello there Swarna!</h2>
+                        <p class="animate__animated animate__fadeInUp"> Here, you can easily keep track of your borrowing history and catch up with your reading progress. Thank you for joining us and happy reading!</p>
+                    </div>
+                    <div class="col d-flex justify-content-center align-items-center">
+                        <img src="../../assets/img/iit1.jpg" alt="" style="border-radius: 50%; width: 300px;height:300px ;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- book-self section -->
+<main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>EBOOKS</h2>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 icon-box" *ngFor="let book of books; let i=index" data-aos="fade-up">
+              <img [src]="book.imageUrl" alt="{{book.title}}" width="90%" height="70%">
+              <h6 class="title text-start"><a [href]="book.borrowDetails">Discrete Mathematics and Its Applications </a></h6>
+          </div>
+        </div>
+
+      </div>
+    </section>

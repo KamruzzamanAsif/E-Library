@@ -7,6 +7,8 @@ import { BookCatalogComponent } from './book-catalog/book-catalog.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     BookCatalogComponent,
     HomepageComponent,
     NavbarComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    DashboardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
