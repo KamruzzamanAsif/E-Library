@@ -17,4 +17,8 @@ export class BookDetailsComponent {
     this.book = this.bookCatalogService.getBookToBeViewed();
   }
 
+  requestBook(): void{
+
+  }
+
 }

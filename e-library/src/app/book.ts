@@ -1,6 +1,7 @@
 export class Book{
   title: string = "";
   author: string = "";
+  description: string = "";
   softcopy: string = "";
   shelf: string = "";
   total_quantity: number = 0;
