@@ -13,7 +13,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     AppComponent,
     BookCatalogComponent,
     HomepageComponent,
-    NavbarComponent
+    NavbarComponent,
     BookDetailsComponent
   ],
   imports: [
