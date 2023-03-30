@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookCatalogComponent } from './book-catalog/book-catalog.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     AppComponent,
     BookCatalogComponent,
     HomepageComponent,
+    NavbarComponent
     BookDetailsComponent
   ],
   imports: [
