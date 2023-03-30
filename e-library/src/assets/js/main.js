@@ -1,13 +1,8 @@
-/**
-* Template Name: Moderna
-* Updated: Mar 10 2023 with Bootstrap v5.2.3
-* Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 (function() {
   "use strict";
-
+  document.addEventListener("DOMContentLoaded",()=>{
+    
   /**
    * Easy selector helper function
    */
@@ -63,8 +58,10 @@
    * Toggle .header-scrolled class to #header when page is scrolled
    */
   let selectHeader = select('#header')
+  console.log(selectHeader);
   if (selectHeader) {
     const headerScrolled = () => {
+      console.log("Scrolled");
       if (window.scrollY > 100) {
         selectHeader.classList.add('header-scrolled')
       } else {
@@ -232,5 +229,6 @@
    * Initiate Pure Counter 
    */
   new PureCounter();
+  })
 
 })()
