@@ -18,4 +18,9 @@ export class BookCatalogComponent implements OnInit{
     this.books = this.bookCatalogService.getBooks();
     this.catalogSize = this.books.length;
   }
+
+  viewDetails(index: number): void{
+    this.bookCatalogService.setBookToBeViewed(index);
+    this.router.navigate(["book-details"]);
+  }
 }

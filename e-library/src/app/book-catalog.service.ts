@@ -13,7 +13,7 @@ export class BookCatalogService {
     {
       title: 'Book 1',
       author: 'John Doe',
-      softcopy: false,
+      softcopy: 'No',
       shelf: "",
       total_quantity: 5,
       available_quantity: 5,
@@ -23,7 +23,7 @@ export class BookCatalogService {
     {
       title: 'Book 1',
       author: 'John Doe',
-      softcopy: false,
+      softcopy: 'No',
       shelf: "",
       total_quantity: 5,
       available_quantity: 5,
@@ -33,7 +33,277 @@ export class BookCatalogService {
     {
       title: 'Book 1',
       author: 'John Doe',
-      softcopy: false,
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
+      shelf: "",
+      total_quantity: 5,
+      available_quantity: 5,
+      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
+      detailsUrl: '#'
+    },
+    {
+      title: 'Book 1',
+      author: 'John Doe',
+      softcopy: 'No',
       shelf: "",
       total_quantity: 5,
       available_quantity: 5,
@@ -42,7 +312,19 @@ export class BookCatalogService {
     }
   ];
 
+  bookToBeViewed: Book = new Book();
+
   getBooks(): Book[] {
     return this.books
+  }
+
+  setBookToBeViewed(index: number): void{
+    let book = this.books[index];
+    if(book != null)
+      this.bookToBeViewed = book;
+  }
+
+  getBookToBeViewed(): Book {
+    return this.bookToBeViewed;
   }
 }
