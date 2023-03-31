@@ -13,6 +13,7 @@ export class BookCatalogService {
     {
       title: 'Book 1',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -163,6 +164,7 @@ export class BookCatalogService {
     {
       title: 'Book 16',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -173,6 +175,7 @@ export class BookCatalogService {
     {
       title: 'Book 17',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -183,6 +186,7 @@ export class BookCatalogService {
     {
       title: 'Book 18',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -193,6 +197,7 @@ export class BookCatalogService {
     {
       title: 'Book 19',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -203,6 +208,7 @@ export class BookCatalogService {
     {
       title: 'Book 20',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -213,6 +219,7 @@ export class BookCatalogService {
     {
       title: 'Book 21',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -223,6 +230,7 @@ export class BookCatalogService {
     {
       title: 'Book 22',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -233,6 +241,7 @@ export class BookCatalogService {
     {
       title: 'Book 23',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -243,6 +252,7 @@ export class BookCatalogService {
     {
       title: 'Book 24',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -253,6 +263,7 @@ export class BookCatalogService {
     {
       title: 'Book 25',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -263,6 +274,7 @@ export class BookCatalogService {
     {
       title: 'Book 26',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -273,6 +285,7 @@ export class BookCatalogService {
     {
       title: 'Book 27',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -283,6 +296,7 @@ export class BookCatalogService {
     {
       title: 'Book 28',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -293,6 +307,7 @@ export class BookCatalogService {
     {
       title: 'Book 29',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,
@@ -303,6 +318,7 @@ export class BookCatalogService {
     {
       title: 'Book 30',
       author: 'John Doe',
+      description: 'this is abc book',
       softcopy: 'No',
       shelf: "",
       total_quantity: 5,

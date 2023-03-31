@@ -30,6 +30,7 @@
           <div class="col-sm-3 icon-box" *ngFor="let book of books; let i=index" data-aos="fade-up">
               <img [src]="book.imageUrl" alt="{{book.title}}" width="90%" height="70%">
               <h6 class="title text-start"><a [href]="book.borrowDetails">{{book.title}} </a></h6>
+
           </div>
         </div>
 

@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
+
 import { AdminModule } from './admin/admin.module';
 
 @NgModule({

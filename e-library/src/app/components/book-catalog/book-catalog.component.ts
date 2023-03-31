@@ -1,4 +1,6 @@
-import { BookCatalogService } from '../../services/book-catalog.service';
+
+import { BookCatalogService } from './../../services/book-catalog.service';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Book } from '../../models/book';
