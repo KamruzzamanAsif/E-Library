@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {Book} from 'src/app/book'
-import { BookCatalogService } from 'src/app/book-catalog.service';
+import {Book} from 'src/app/models/book'
+import { BookCatalogService } from 'src/app/services/book-catalog.service';
 
 @Component({
   selector: 'app-all-books-settings',
