@@ -22,147 +22,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 2',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 3',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 4',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 5',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 6',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 7',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 8',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 9',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 10',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 11',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 12',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 13',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 14',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 15',
-      author: 'John Doe',
-      softcopy: 'No',
-      shelf: "",
-      total_quantity: 5,
-      available_quantity: 5,
-      imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
-    },
-    {
-      title: 'Book 16',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -173,7 +33,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 17',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -184,7 +44,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 18',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -195,7 +55,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 19',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -206,7 +66,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 20',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -217,7 +77,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 21',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -228,7 +88,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 22',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -239,7 +99,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 23',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -250,7 +110,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 24',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -261,7 +121,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 25',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -272,7 +132,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 26',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -283,7 +143,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 27',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -294,7 +154,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 28',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -305,7 +165,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 29',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
@@ -316,7 +176,7 @@ export class BookCatalogService {
       detailsUrl: '#'
     },
     {
-      title: 'Book 30',
+      title: 'Book 1',
       author: 'John Doe',
       description: 'this is abc book',
       softcopy: 'No',
