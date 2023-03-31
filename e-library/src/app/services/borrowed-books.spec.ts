@@ -1,4 +1,4 @@
-import { BorrowedBooks } from './borrowed-books';
+import { BorrowedBooks } from '../models/borrowed-books';
 
 describe('BorrowedBooks', () => {
   it('should create an instance', () => {

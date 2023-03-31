@@ -16,7 +16,7 @@
     top: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom right, rgba(30, 67, 86, 0.8), rgba(255, 255, 255, 0)), url("../../assets/img/lib1.png") right bottom no-repeat;
+    background: linear-gradient(to bottom right, rgba(30, 67, 86, 0.8), rgba(255, 255, 255, 0)), url("../../../assets/img/lib1.png") right bottom no-repeat;
   }
   
   #hero-no-slider h2 {
