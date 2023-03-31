@@ -4,12 +4,12 @@ import { FormsModule } from '@angular/forms'; // import FormsModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BookCatalogComponent } from './book-catalog/book-catalog.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { BookDetailsComponent } from './book-details/book-details.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { FooterComponent } from './footer/footer.component';
+import { BookCatalogComponent } from './components/book-catalog/book-catalog.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { AdminModule } from './admin/admin.module';
 
 @NgModule({
