@@ -1,0 +1,25 @@
+<section style="margin-top: 10%;">
+    <div class="container">
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Total</th>
+                        <th>Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let book of books;let i=index">
+                        <td>{{book.title}}</td>
+                        <td>{{book.author}}</td>
+                        <td>{{book.total_quantity}}</td>
+                        <td>{{book.available_quantity}}</td>
+                        <td><button type="button" class="btn btn-primary" (click)="editBook(i)">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
