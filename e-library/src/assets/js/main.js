@@ -58,10 +58,8 @@
    * Toggle .header-scrolled class to #header when page is scrolled
    */
   let selectHeader = select('#header')
-  console.log(selectHeader);
   if (selectHeader) {
     const headerScrolled = () => {
-      console.log("Scrolled");
       if (window.scrollY > 100) {
         selectHeader.classList.add('header-scrolled')
       } else {
@@ -97,25 +95,15 @@
     this.classList.toggle('bi-x')
   })
 
-
-  // on('click', '#page', function(e) {
-  //   let navbar = select('#navbar')
-  //     if (navbar.classList.contains('navbar-mobile')) {
-  //       navbar.classList.remove('navbar-mobile')
-  //       let navbarToggle = select('.mobile-nav-toggle')
-  //       navbarToggle.classList.toggle('bi-list')
-  //       navbarToggle.classList.toggle('bi-x')
-  //     }
-  // })
   window.document.querySelectorAll("a").forEach(element=>{
     element.addEventListener('click',()=>{
       if(element.id==="page"){
         let navbar = select('#navbar')
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
+        if (navbar.classList.contains('navbar-mobile')) {
+          navbar.classList.remove('navbar-mobile')
+          let navbarToggle = select('.mobile-nav-toggle')
+          navbarToggle.classList.toggle('bi-list')
+          navbarToggle.classList.toggle('bi-x')
       }
       }
     })
