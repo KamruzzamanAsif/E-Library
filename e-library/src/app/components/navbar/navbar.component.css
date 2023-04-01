@@ -40,12 +40,14 @@
   transition: all 0.5s;
   z-index: 997;
   transition: all 0.5s;
-  background: #1e4356;
+  background: #05a9fa;
+  position: fixed;
 }
 
-#header.header-transparent {
-  background: none;
-}
+
+/* #header.header-transparent {
+  background: #1e4356;
+} */
 
 #header.header-scrolled {
   background: rgba(30, 67, 86, 0.8);

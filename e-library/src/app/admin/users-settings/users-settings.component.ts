@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { UsersService } from '../users.service';
+import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
-import { Users } from '../users';
+import { Users } from '../../models/users';
 
 @Component({
   selector: 'app-users-settings',

@@ -55,4 +55,16 @@ body {
     visibility: visible;
     opacity: 1;
   }
+
+  .error-snackbar{
+    background-color: #f81100;
+    color: white;
+  }
+
+  .success-snackbar{
+    background-color: #4caf50;
+    color: white;
+  }
   
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

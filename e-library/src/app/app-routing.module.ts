@@ -10,6 +10,8 @@ import { UsersRecordComponent } from './admin/users-record/users-record.componen
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AllBooksRecordComponent } from './admin/all-books-record/all-books-record.component';
 import { AllBooksSettingsComponent } from './admin/all-books-settings/all-books-settings.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   {path:"", component:HomepageComponent},
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path:"admin-dashboard",component:AdminDashboardComponent},
   {path:"users-settings",component:UsersSettingsComponent},
   {path:"all-books-record",component:AllBooksRecordComponent},
-  {path:"all-book-settings",component:AllBooksSettingsComponent}
+  {path:"all-book-settings",component:AllBooksSettingsComponent},
+  {path:"login", component: LoginComponent},
+  {path:"signup", component: SignupComponent}
 ];
 
 @NgModule({

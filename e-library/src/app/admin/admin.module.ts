@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     AdminDashboardComponent,
