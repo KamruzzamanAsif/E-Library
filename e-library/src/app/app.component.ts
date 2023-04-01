@@ -12,22 +12,20 @@ export class AppComponent {
     this.router.events.subscribe((event)=>{
       if(event instanceof NavigationStart){
         const navbar=window.document.getElementById("header");
-        if(navbar){
-          navbar.style.background="none"
-        }
+        
       }
       if(event instanceof NavigationEnd){
         const currentRoute=this.router.url;
         const navbar=window.document.getElementById("header");
         if(currentRoute==="/book-details"||currentRoute==="/all-books-record"||currentRoute==="/all-book-settings"||currentRoute==="/users-record"||currentRoute==="/users-settings"){
           if(navbar){
-            // navbar.classList.remove("header-transparent")
-            navbar.style.backgroundColor="red"
-            console.log(navbar.style.backgroundColor)
+            navbar.classList.remove("header-transparent")
           }
         }
         else{
-          
+          if(navbar){
+            navbar.classList.add("header-transparent")
+          }
         }
       }
     })
