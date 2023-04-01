@@ -1,0 +1,24 @@
+<section style="margin-top: 10%;">
+    <div class="container">
+        <form>
+            <div class="mb-3 mt-3">
+              <label for="title">Title:</label>
+              <input type="text" class="form-control" id="title" placeholder="Edit title" name="title" [(ngModel)]="book.title">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="author">Author:</label>
+                <input type="text" class="form-control" id="author" placeholder="Edit author nane" name="author" [(ngModel)]="book.author">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="total">Total quantity:</label>
+                <input type="number" class="form-control" id="total" placeholder="Edit total quantity" name="total" [(ngModel)]="book.total_quantity">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="imageUrl">Image URL:</label>
+                <input type="text" class="form-control" id="imageUrl" placeholder="Edit cover photo" name="imageUrl" [(ngModel)]="book.imageUrl">
+            </div>
+    
+            <button type="submit" class="btn btn-primary" (click)="updated()">Submit</button>
+          </form>
+    </div>
+</section>

@@ -8,5 +8,10 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
+  // check(){
+  //   if (document.getElementById('navbar')?.classList.contains('navbar-mobile')) {
+  //     document.getElementById('navbar')?.classList.toggle('navbar-mobile')
+  //     console.log("pressed")
+  //   }
+  // }
 }
