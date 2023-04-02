@@ -1,5 +1,8 @@
+from user import User
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.params import Depends
 from pydantic import BaseModel
 from typing import Optional
 import mysql.connector
@@ -32,20 +35,14 @@ def get_db():
     return db
 
 
-# define a temporary user model for login
-# just for username and password
-class User(BaseModel):
-    username: str
-    password: str
-
 
 # define a login endpoint
 @app.post("/login")
-async def login(user: User):
+async def login(username: str, password: str):
     db = get_db()
     cursor = db.cursor()
     query = "SELECT * FROM user WHERE name = %s AND password = %s"
-    values = (user.username, user.password)
+    values = (username, password)
     cursor.execute(query, values)
     result = cursor.fetchone()
     if result is None:
@@ -55,3 +52,19 @@ async def login(user: User):
         return {"yes"}
 
 
+
+# Route to create a new user
+@app.post("/signup", response_model= User)
+async def signup(user: User, db: mysql.connector.connection.MySQLConnection = Depends(get_db)):
+    # Check if the username or email is already in use
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM user WHERE name = %s OR email = %s", (user.name, user.email))
+    result = cursor.fetchone()
+    if result:
+        raise HTTPException(status_code=400, detail="Username or email already in use")
+
+    # Insert the new user into the database
+    cursor.execute("INSERT INTO user (id, name, roll, batch, session, program_level, mobile_number, address, email, password, status, role) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (user.id, user.name, user.roll, user.batch, user.session, user.program_level, user.mobile_number, user.address, user.email, user.password, user.status, user.role))
+    db.commit()
+
+    return {"message": "User created successfully"}
