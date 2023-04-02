@@ -8,4 +8,5 @@ export class Book{
   available_quantity: number = 0;
   imageUrl: string = "";
   detailsUrl: string = "";
+  category:string=""
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BorrowedBooks } from './../../models/borrowed-books';
-import { BorrowedBooksService } from './../../services/borrowed-books.service';
+import { BorrowedBooks } from '../../models/borrowed-books';
+import { BorrowedBooksService } from '../../services/borrowed-books.service';
 
 @Component({
   selector: 'app-dashboard',
