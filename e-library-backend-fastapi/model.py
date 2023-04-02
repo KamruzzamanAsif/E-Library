@@ -13,3 +13,17 @@ class User(BaseModel):
     password = ""
     status = ""
     role = ""
+
+
+class Book(BaseModel):
+    id = 0
+    title = ""
+    author = ""
+    description = ""
+    softcopy = ""
+    shelf = ""
+    total_quantity = ""
+    available_quantity = ""
+    imageUrl = ""
+    softcopyUrl = ""
+    category = ""

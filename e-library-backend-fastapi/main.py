@@ -1,4 +1,4 @@
-from user import User
+from model import User, Book
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -108,4 +108,64 @@ def forgot_password(email: str):
         db.close()
 
 
-    
+@app.post("/books")
+def add_book(book: Book):
+    try:
+        db = get_db()
+        cursor = db.cursor()
+        sql = "INSERT INTO book (id, title, author, description, softcopy, shelf, total_quantity, available_quantity, imageUrl, softcopyUrl, category) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        values = (book.id, book.title, book.author, book.description, book.softcopy, book.shelf, book.total_quantity, book.available_quantity, book.imageUrl, book.softcopyUrl, book.category)
+        cursor.execute(sql, values)
+        db.commit()
+        return {"message": "Book added successfully"}
+    except mysql.connector.Error as error:
+        print("Error connecting to database: ", error)
+        raise HTTPException(status_code=500, detail="Internal server error")
+    finally:
+        cursor.close()
+        db.close()
+
+
+@app.put("/books/{book_id}")
+def update_book(book_id: int, book: Book):
+    try:
+        db = get_db()
+        cursor = db.cursor()
+        # check if the book exists in the database
+        cursor.execute("SELECT * FROM book WHERE id = %s", (book_id,))
+        result = cursor.fetchone()
+        if result is None:
+            raise HTTPException(status_code=404, detail="Book not found")
+        # update the book in the database
+        sql = "UPDATE book SET id= %s, title = %s, author = %s, description = %s, softcopy = %s, shelf = %s, total_quantity = %s, available_quantity = %s, imageUrl = %s, softcopyUrl = %s, category = %s WHERE id = %s"
+        values = (book.id, book.title, book.author, book.description, book.softcopy, book.shelf, book.total_quantity, book.available_quantity, book.imageUrl, book.softcopyUrl, book.category, book_id)
+        cursor.execute(sql, values)
+        db.commit()
+        return {"message": "Book updated successfully"}
+    except mysql.connector.Error as error:
+        print("Error connecting to database: ", error)
+        raise HTTPException(status_code=500, detail="Internal server error")
+    finally:
+        cursor.close()
+        db.close()
+
+
+@app.delete("/books/{book_id}")
+async def delete_book(book_id: int):
+    # Create cursor object to execute SQL queries
+    db = get_db()
+    cursor = db.cursor()
+
+    # Define SQL command to delete a book with the given ID
+    sql = "DELETE FROM book WHERE id = %s"
+    val = (book_id,)
+
+    # Execute SQL command to delete the book from the database
+    cursor.execute(sql, val)
+    db.commit()
+
+    # Check if the book was deleted successfully
+    if cursor.rowcount == 0:
+        return {"message": "Book not found"}
+    else:
+        return {"message": "Book deleted successfully"}

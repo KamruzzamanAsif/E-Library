@@ -1,0 +1,41 @@
+create table user (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(50),
+    roll varchar(20),
+    batch varchar(10),
+    session varchar(10),
+    program_level varchar(10),
+    mobile_number varchar(30),
+    address varchar(250),
+    email varchar(250),
+    password varchar(250),
+    status varchar(20),
+    role varchar(20),
+    UNIQUE (email)
+);
+
+insert into user (name, mobile_number, email, password, status, role) 
+values ('admin', '01766610087', 'cooldev1204@gmail.com', 'CoolDev#1204', 'true', 'admin');
+
+
+CREATE TABLE book (
+  id INT PRIMARY KEY,
+  title VARCHAR(255),
+  author VARCHAR(255),
+  description TEXT,
+  softcopy VARCHAR(5),
+  shelf VARCHAR(10),
+  total_quantity INT,
+  available_quantity INT,
+  imageUrl VARCHAR(255),
+  softcopyUrl VARCHAR(255),
+  category VARCHAR(255),
+  UNIQUE(id)
+);
+
+
+INSERT INTO book (id, title, author, description, softcopy, shelf, total_quantity, available_quantity, imageUrl, softcopyUrl, category)
+VALUES ('1', 'The Great Gatsby', 'F. Scott Fitzgerald', 'A classic novel about the Roaring Twenties', 'yes', '10/A', 10, 5, 'https://example.com/gatsby.jpg', 'https://example.com/gatsby.pdf', 'Literature');
+
+INSERT INTO book (id, title, author, description, softcopy, shelf, total_quantity, available_quantity, imageUrl, softcopyUrl, category)
+VALUES ('2', 'The Da Vinci Code', 'Dan Brown', 'A thriller about a conspiracy involving the Catholic Church', 'Mystery', 20, 10, 'https://example.com/davinci.jpg', 'https://example.com/davinci.pdf', 'Fiction');
