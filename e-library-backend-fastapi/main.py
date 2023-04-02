@@ -6,6 +6,8 @@ from fastapi.params import Depends
 from pydantic import BaseModel
 from typing import Optional
 import mysql.connector
+import smtplib
+from email.mime.text import MIMEText
 
 
 app = FastAPI()
@@ -69,3 +71,41 @@ async def signup(user: User, db: mysql.connector.connection.MySQLConnection = De
     db.commit()
 
     return {"message": "User created successfully"}
+
+
+@app.post("/forgot_password")
+def forgot_password(email: str):
+    try:
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM user WHERE email = %s", (email,))
+        result = cursor.fetchone()
+        if result is None:
+            raise HTTPException(status_code=404, detail="User not found")
+        # generate a new password and update the database
+        new_password = "my_new_password"
+        cursor.execute("UPDATE user SET password = %s WHERE email = %s", (new_password, email))
+        db.commit()
+        # send an email to the user with the new password
+        msg = MIMEText(f"Your new password is {new_password}")
+        msg['Subject'] = 'New Password Request'
+        msg['From'] = 'asif420kamruzzaman@gmail.com'
+        msg['To'] = email
+        s = smtplib.SMTP('smtp.gmail.com', 587)
+        s.starttls()
+        s.login('asif420kamruzzaman@gmail.com', 'sauowioxhlinhgmd')
+        s.sendmail(msg['From'], [msg['To']], msg.as_string())
+        s.quit()
+        return {"message": "Password reset successful. Check your email for the new password."}
+    except mysql.connector.Error as error:
+        print("Error connecting to database: ", error)
+        raise HTTPException(status_code=500, detail="Internal server error")
+    except smtplib.SMTPException as error:
+        print("Error sending email: ", error)
+        raise HTTPException(status_code=500, detail="Internal server error")
+    finally:
+        cursor.close()
+        db.close()
+
+
+    
