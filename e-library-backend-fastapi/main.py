@@ -47,8 +47,9 @@ async def login(username: str, password: str):
     result = cursor.fetchone()
     if result is None:
         raise HTTPException(status_code=401, detail="Invalid username or password")
+    elif result[10] == 'false':
+        raise HTTPException(status_code=401, detail="User is not authorized by admin")
     else:
-        print(result)
         return {"yes"}
 
 
