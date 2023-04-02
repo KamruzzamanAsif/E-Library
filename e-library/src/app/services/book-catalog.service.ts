@@ -19,7 +19,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"ml"
     },
     {
       title: 'Book 1',
@@ -30,7 +31,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"dsa"
     },
     {
       title: 'Book 1',
@@ -41,7 +43,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"oop"
     },
     {
       title: 'Book 1',
@@ -52,7 +55,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"dsa"
     },
     {
       title: 'Book 1',
@@ -63,7 +67,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"oop"
     },
     {
       title: 'Book 1',
@@ -74,7 +79,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"ml"
     },
     {
       title: 'Book 1',
@@ -85,7 +91,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"os"
     },
     {
       title: 'Book 1',
@@ -96,7 +103,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"ml"
     },
     {
       title: 'Book 1',
@@ -107,7 +115,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"dsa"
     },
     {
       title: 'Book 1',
@@ -118,7 +127,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"os"
     },
     {
       title: 'Book 1',
@@ -129,7 +139,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"ml"
     },
     {
       title: 'Book 1',
@@ -140,7 +151,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"oop"
     },
     {
       title: 'Book 1',
@@ -151,7 +163,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"dsa"
     },
     {
       title: 'Book 1',
@@ -162,7 +175,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"dsa"
     },
     {
       title: 'Book 1',
@@ -173,7 +187,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"oop"
     },
     {
       title: 'Book 1',
@@ -184,7 +199,8 @@ export class BookCatalogService {
       total_quantity: 5,
       available_quantity: 5,
       imageUrl: 'https://via.placeholder.com/200x200.png?text=Book+1',
-      detailsUrl: '#'
+      detailsUrl: '#',
+      category:"ml"
     }
   ];
 
