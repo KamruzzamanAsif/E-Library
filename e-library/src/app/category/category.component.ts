@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Book } from '../models/book';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookCatalogService } from '../services/book-catalog.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { BookCatalogService } from '../services/book-catalog.service';
 export class CategoryComponent {
   category: string = "";
   books: Book[] = []
-  constructor(private route: ActivatedRoute, private bookService: BookCatalogService) { }
+  constructor(private route: ActivatedRoute, private bookService: BookCatalogService, private router:Router) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -25,6 +25,10 @@ export class CategoryComponent {
         }
       }
     });
+  }
+  viewDetails(index: number): void{
+    this.bookService.setBookToBeViewed(index);
+    this.router.navigate(["book-details"]);
   }
 
 }
