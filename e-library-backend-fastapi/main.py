@@ -260,5 +260,50 @@ def search_books_by_author(author: str):
         db.close()
         # Return the list of books as a JSON response
         return book_list
+    
+
+# Search by Book Name Endpoint
+@app.get("/books/books_by_name/{book_name}", response_model=list[Book])
+def search_books_by_name(book_name: str):
+    # MySQL Connection
+    db = get_db()
+    cursor = db.cursor()
+
+    # Query
+    query = "SELECT * FROM book WHERE title LIKE %s"
+    values = (f"%{book_name}%",)
+
+    # Execute Query
+    cursor.execute(query, values)
+
+    # Get all rows that match the search criteria
+    books = cursor.fetchall()
+
+    # Check if any books were found
+    if len(books) == 0:
+        return {"message": "No books found for this name"}
+    else:
+        # Convert the result to a list of dictionaries
+        book_list = []
+        for book in books:
+            book_list.append({
+            "id": book[0],
+            "title": book[1],
+            "author": book[2],
+            "description": book[3],
+            "softcopy": book[4],
+            "shelf": book[5],
+            "total_quantity": book[6],
+            "available_quantity": book[7],
+            "imageUrl": book[8],
+            "softcopyUrl": book[9],
+            "category": book[10]
+        })
+
+        # close db connection
+        cursor.close()
+        db.close()
+        # Return the list of books as a JSON response
+        return book_list
 
 
