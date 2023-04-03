@@ -43,9 +43,9 @@
   background: #1e4356;
 }
 
-#header.header-transparent {
+/* #header.header-transparent {
   background: none;
-}
+} */
 
 #header.header-scrolled {
   background: rgba(30, 67, 86, 0.8);

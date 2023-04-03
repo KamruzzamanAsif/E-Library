@@ -12,7 +12,8 @@ import { AllBooksRecordComponent } from './admin/all-books-record/all-books-reco
 import { AllBooksSettingsComponent } from './admin/all-books-settings/all-books-settings.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { CategoryComponent } from './category/category.component';
+import { CategoryComponent } from './components/category/category.component';
+import { AddBookComponent } from './admin/add-book/add-book.component';
 
 const routes: Routes = [
   {path:"", component:HomepageComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path:"all-book-settings",component:AllBooksSettingsComponent},
   {path:"login", component: LoginComponent},
   {path:"signup", component: SignupComponent},
-  {path:"category",component:CategoryComponent}
+  {path:"category",component:CategoryComponent},
+  {path:"add-book",component:AddBookComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,67 @@
+
+<section style="margin: 10%;">
+  <div class="container">
+    <form class="example-form">
+      <div class="row">
+        <div class="col">
+          <mat-form-field hintLabel="Max 255 characters" appearance="fill">
+            <mat-label>Book Title</mat-label>
+            <input matInput #input maxlength="255" placeholder="Ex. Discrete Mathematics and Its Applications" id="title" name="title" value="" required>
+            <mat-hint align="end">{{input.value.length}}/255</mat-hint>
+          </mat-form-field>
+        </div>
+    
+        <div class="col">
+          <mat-form-field hintLabel="Max 255 characters" appearance="fill">
+            <mat-label>Author's Name</mat-label>
+            <input matInput #input maxlength="255" placeholder="Ex. Rosen" id="author" name="author" value="" required>
+            <mat-hint align="end">{{input.value.length}}/255</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Category</mat-label>
+          <input type="text" placeholder="" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" id="category" name="category" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-hint align="start">You can type for fast searching</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="fill" floatLabel="always">
+          <mat-label>Total Amount</mat-label>
+          <input matInput type="number"  id="totalQuantity" name="totalQuantity" value="" class="example-right-align" placeholder="0">
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput ></textarea>
+        </mat-form-field>
+      </div>
+  
+      <div class="row">
+        <mat-radio-group [formControl]="floatLabelControl">
+          <mat-label>SoftCopy Available: </mat-label>
+          <mat-radio-button>Yes</mat-radio-button>
+          <mat-radio-button>No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="row">
+        <input type="file">
+      </div>
+      <div class="row">
+        <div class="col"><button type="submit" class="btn btn-primary">Add Book</button></div>
+      </div>
+
+    </form>
+  </div>
+
+</section>
