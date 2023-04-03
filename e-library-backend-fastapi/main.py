@@ -169,3 +169,96 @@ async def delete_book(book_id: int):
         return {"message": "Book not found"}
     else:
         return {"message": "Book deleted successfully"}
+    
+
+
+# Define GET endpoint to search for books by category
+@app.get("/books/books_by_category/{category}", response_model=list[Book])
+async def search_books(category: str):
+    # Create cursor object to execute SQL queries
+    db = get_db()
+    cursor = db.cursor()
+
+    # Define SQL command to search for books with the given category
+    sql = "SELECT * FROM book WHERE category = %s"
+    val = (category,)
+
+    # Execute SQL command to search for books in the database
+    cursor.execute(sql, val)
+
+    # Get all rows that match the search criteria
+    books = cursor.fetchall()
+
+    # Check if any books were found
+    if len(books) == 0:
+        return {"message": "No books found for this category"}
+    else:
+        # Convert the result to a list of dictionaries
+        book_list = []
+        for book in books:
+            book_list.append({
+            "id": book[0],
+            "title": book[1],
+            "author": book[2],
+            "description": book[3],
+            "softcopy": book[4],
+            "shelf": book[5],
+            "total_quantity": book[6],
+            "available_quantity": book[7],
+            "imageUrl": book[8],
+            "softcopyUrl": book[9],
+            "category": book[10]
+        })
+
+        # close db connection
+        cursor.close()
+        db.close()
+        # Return the list of books as a JSON response
+        return book_list
+    
+
+# Search by Author Endpoint
+@app.get("/books/books_by_author/{author}", response_model=list[Book])
+def search_books_by_author(author: str):
+    # MySQL Connection
+    db = get_db()
+    cursor = db.cursor()
+
+    # Query
+    query = "SELECT * FROM book WHERE author LIKE %s"
+    values = (f"%{author}%",)
+
+    # Execute Query
+    cursor.execute(query, values)
+
+    # Get all rows that match the search criteria
+    books = cursor.fetchall()
+
+    # Check if any books were found
+    if len(books) == 0:
+        return {"message": "No books found for this author"}
+    else:
+        # Convert the result to a list of dictionaries
+        book_list = []
+        for book in books:
+            book_list.append({
+            "id": book[0],
+            "title": book[1],
+            "author": book[2],
+            "description": book[3],
+            "softcopy": book[4],
+            "shelf": book[5],
+            "total_quantity": book[6],
+            "available_quantity": book[7],
+            "imageUrl": book[8],
+            "softcopyUrl": book[9],
+            "category": book[10]
+        })
+
+        # close db connection
+        cursor.close()
+        db.close()
+        # Return the list of books as a JSON response
+        return book_list
+
+
