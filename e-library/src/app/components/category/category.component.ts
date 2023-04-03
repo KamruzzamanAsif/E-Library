@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Book } from '../models/book';
+import { Book } from '../../models/book';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BookCatalogService } from '../services/book-catalog.service';
+import { BookCatalogService } from '../../services/book-catalog.service';
 
 @Component({
   selector: 'app-category',

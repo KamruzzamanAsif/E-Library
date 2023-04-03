@@ -1,14 +1,15 @@
-<ng-container *ngIf="isAdminLoggedIn; else appNav">
+<ng-container>
     <!-- Render the admin-navbar component -->
     <app-admin-navbar></app-admin-navbar>
 </ng-container>
 
-<ng-template #appNav>
+<!-- <ng-template #appNav> -->
     <!-- Render the app-navbar component -->
-    <app-navbar></app-navbar>
-</ng-template>
+    <!-- <app-navbar></app-navbar> -->
+<!-- </ng-template> -->
 
 <!-- Render the rest of the content -->
-<ngx-ui-loader></ngx-ui-loader>
+<!-- <ngx-ui-loader></ngx-ui-loader> -->
 <router-outlet></router-outlet>
 <app-footer></app-footer>
+<!-- *ngIf="isAdminLoggedIn; else appNav" -->
