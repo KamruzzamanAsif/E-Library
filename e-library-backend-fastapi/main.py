@@ -1,4 +1,4 @@
-from model import User, Book
+from model import User, Book, BookLending
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -325,7 +325,7 @@ def get_unapproved_users():
 
     # Get all rows that match the search criteria
     unapproved_users = cursor.fetchall()
-    print(len(unapproved_users))
+    
     # Check if any users were found
     if len(unapproved_users) == 0:
         return JSONResponse(content={"message": "No unapproved users found"})
@@ -355,4 +355,232 @@ def get_unapproved_users():
         # Return the list of unapproved users as a JSON response
         return unapproved_user_list
     
+
+# Get all approved users
+@app.get("/users/approved", response_model=list[User])
+def get_approved_users():
+    # MySQL Connection
+    db = get_db()
+    cursor = db.cursor()
+
+    # Query
+    query = "SELECT * FROM user WHERE status = 'true'"
+    
+    # Execute Query
+    cursor.execute(query)
+
+    # Get all rows that match the search criteria
+    approved_users = cursor.fetchall()
+    
+    # Check if any users were found
+    if len(approved_users) == 0:
+        return JSONResponse(content={"message": "No approved users found"})
+    else:
+        # Convert the result to a list of User objects
+        approved_user_list = []
+        for approved_user in approved_users:
+            approved_user_list.append({
+                "id": approved_user[0],
+                "name": approved_user[1],
+                "roll": approved_user[2],
+                "batch": approved_user[3],
+                "session": approved_user[4],
+                "program_level": approved_user[5],
+                "mobile_number": approved_user[6],
+                "address": approved_user[7],
+                "email": approved_user[8],
+                "password": approved_user[9],
+                "status": approved_user[10],
+                "role": approved_user[11]
+            })
+
+        # Close the database connection
+        cursor.close()
+        db.close()
+
+        # Return the list of unapproved users as a JSON response
+        return approved_user_list
+
+
+# Get all users
+@app.get("/users/all_users", response_model=list[User])
+def get_all_users():
+    # MySQL Connection
+    db = get_db()
+    cursor = db.cursor()
+
+    # Query
+    query = "SELECT * FROM user"
+    
+    # Execute Query
+    cursor.execute(query)
+
+    # Get all rows that match the search criteria
+    users = cursor.fetchall()
+
+    # Check if any users were found
+    if len(users) == 0:
+        return JSONResponse(content={"message": "No unapproved users found"})
+    else:
+        # Convert the result to a list of User objects
+        user_list = []
+        for user in users:
+            user_list.append({
+                "id": user[0],
+                "name": user[1],
+                "roll": user[2],
+                "batch": user[3],
+                "session": user[4],
+                "program_level": user[5],
+                "mobile_number": user[6],
+                "address": user[7],
+                "email": user[8],
+                "password": user[9],
+                "status": user[10],
+                "role": user[11]
+            })
+
+        # Close the database connection
+        cursor.close()
+        db.close()
+
+        # Return the list of unapproved users as a JSON response
+        return user_list
+    
+
+# Approve a user
+@app.post("/users/approve_a_user")
+def approve_user(user_email: str):
+    # MySQL Connection
+    db = get_db()
+    cursor = db.cursor()
+
+    # Query to find user with specified email and false status
+    query = "SELECT * FROM user WHERE email = %s AND status = 'false'"
+
+    # Execute query with user email parameter
+    cursor.execute(query, (user_email,))
+
+    # Get the first row that matches the search criteria
+    user = cursor.fetchone()
+
+    # If no user found with the specified email and false status, raise an exception
+    if user is None:
+        raise HTTPException(status_code=404, detail="User not found or already approved")
+
+    # If user found, update the status to true
+    query = "UPDATE user SET status = 'true' WHERE email = %s"
+    cursor.execute(query, (user_email,))
+    db.commit()
+
+    # Close the database connection
+    cursor.close()
+    db.close()
+
+    # Return  as a JSON response
+    return {"message": f"User with email {user_email} has been approved."}
+
+
+
+
+
+######################    BOOK LENDING SECTION STARTS #################
+
+
+# Get all book lendings
+@app.get("/books/get_book_lendings", response_model=list[BookLending])
+def get_book_lendings():
+    # MySQL Connection
+    db = get_db()
+    cursor = db.cursor()
+
+    # Query
+    query = "SELECT * FROM book_lending"
+    
+    # Execute Query
+    cursor.execute(query)
+
+    # Get all rows that match the search criteria
+    book_lendings = cursor.fetchall()
+
+    # Check if any book lendings were found
+    if len(book_lendings) == 0:
+        return JSONResponse(content={"message": "No book lendings found"})
+    else:
+        # Convert the result to a list of BookLending objects
+        book_lendings_list = []
+        for book_lending in book_lendings:
+            book_lending_obj = BookLending(
+                user_email=book_lending[0],
+                book_id=book_lending[1],
+                borrow_date=str(book_lending[2]),
+                return_date=str(book_lending[3])
+            )
+            book_lendings_list.append(book_lending_obj)
+
+        # Close the database connection
+        cursor.close()
+        db.close()
+
+        # Return the list of book lendings as a JSON response
+        return book_lendings_list
+
+
+
+# Add a new book lending record
+@app.post("/books/lend_a_book")
+def lend_a_book(user_email: str, book_id: int, borrow_date: str):
+    # MySQL Connection
+    db = get_db()
+    cursor = db.cursor()
+
+    # Query
+    query = "INSERT INTO book_lending (user_email, book_id, borrow_date) VALUES (%s, %s, %s)"
+    
+    # Data
+    data = (user_email, book_id, borrow_date)
+
+    # Execute Query
+    cursor.execute(query, data)
+
+    # Commit the transaction
+    # update the book availability
+    cursor.execute("UPDATE book SET available_quantity = available_quantity - 1 WHERE id = %s", (book_id,))
+    db.commit()
+
+    # Close the database connection
+    cursor.close()
+    db.close()
+
+    # Return a success message
+    return {"message": "Book lending added successfully"}
+
+
+
+# Add a new book return record
+@app.post("/books/return_a_book")
+def return_a_book(user_email: str, book_id: int, return_date: str):
+    # MySQL Connection
+    db = get_db()
+    cursor = db.cursor()
+
+    # Query
+    cursor.execute("UPDATE book_lending SET return_date = %s WHERE book_id = %s AND user_email = %s", (return_date, book_id, user_email))
+    
+
+    # Commit the transaction
+    # update the book availability
+    cursor.execute("UPDATE book SET available_quantity = available_quantity + 1 WHERE id = %s", (book_id,))
+    db.commit()
+
+    # Close the database connection
+    cursor.close()
+    db.close()
+
+    # Return a success message
+    return {"message": "Book returned successfully"}
+
+
+######################### BOOK LENDING SECTION ENDS #########################
+
 

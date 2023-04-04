@@ -28,3 +28,11 @@ class Book(BaseModel):
     imageUrl: str = ""
     softcopyUrl: str = ""
     category: str = ""
+
+
+
+class BookLending(BaseModel):
+    user_email: str = ""
+    book_id: str = ""
+    borrow_date: str = ""
+    return_date: Optional[str] = None

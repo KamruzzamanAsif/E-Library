@@ -39,3 +39,19 @@ VALUES ('1', 'The Great Gatsby', 'F. Scott Fitzgerald', 'A classic novel about t
 
 INSERT INTO book (id, title, author, description, softcopy, shelf, total_quantity, available_quantity, imageUrl, softcopyUrl, category)
 VALUES ('2', 'The Da Vinci Code', 'Dan Brown', 'A thriller about a conspiracy involving the Catholic Church', 'Mystery', 20, 10, 'https://example.com/davinci.jpg', 'https://example.com/davinci.pdf', 'Fiction');
+
+
+
+CREATE TABLE book_lending (
+    user_email VARCHAR(255) NOT NULL,
+    book_id INT NOT NULL,
+    borrow_date DATE NOT NULL,
+    return_date DATE,
+    PRIMARY KEY (user_email, book_id),
+    FOREIGN KEY (user_email) REFERENCES user(email),
+    FOREIGN KEY (book_id) REFERENCES book(id)
+);
+
+INSERT INTO book_lending (user_email, book_id, borrow_date, return_date)
+VALUES 
+    ('bsse1217@iit.du.ac.bd', 1, '2023-03-02', '2023-03-09');
