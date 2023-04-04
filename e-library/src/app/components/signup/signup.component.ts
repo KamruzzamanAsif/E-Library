@@ -52,30 +52,33 @@ export class SignupComponent implements OnInit {
       session: formData.session,
       program_level: formData.programLevel,
       mobile_number: formData.phoneNumber,
+      address: formData.address,
       email: formData.email,
       password: formData.password,
-      address: formData.address
+      status: 'false',
+      role: 'user'
     }
 
     console.log(data);
 
     this.apiService.signup(data).subscribe((response: any) => {
+      console.log("RES: ", response);
       this.ngxService.stop();
-      this.responseMsg = response?.message;
+      this.responseMsg = 'User Created Successfully';
       this.snackBarService.openSnackBar(this.responseMsg, '');
       this.router.navigate(['/login']);
     }, (error) => {
+      console.log("Error: ", error)
       this.ngxService.stop();
-      if (error.error?.message) {
-        this.responseMsg = error.error?.message;
+      if (error.error?.detail) {
+        this.responseMsg = error.error?.detail;
       }
       else {
         this.responseMsg = GlobalConstants.genericError;
       }
       this.snackBarService.openSnackBar(this.responseMsg, GlobalConstants.error);
-    }
+    });
 
-    );
   }
 
 

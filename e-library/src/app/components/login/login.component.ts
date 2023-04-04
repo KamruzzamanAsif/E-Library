@@ -30,16 +30,18 @@ export class LoginComponent {
 
     this.apiService.login(data).subscribe(
       (response: any) => {
+        console.log("RES: ", response);
         this.ngxService.stop();
         this.responseMsg = response?.message;
         this.snackBarService.openSnackBar('Welcome Admin!', '');
         localStorage.setItem('token', response?.token);
-        this.router.navigate(['/admin-dashboard']);
+        this.router.navigate(['/admin-dashboard']).then(()=>{window.location.reload();});
       },
       (error) => {
+        console.log("Error: ", error.error.detail)
         this.ngxService.stop();
-        if (error.error?.message) {
-          this.responseMsg = error.error?.message;
+        if (error.error?.detail) {
+          this.responseMsg = error.error?.detail;
         } else {
           this.responseMsg = GlobalConstants.genericError;
         }
@@ -47,7 +49,7 @@ export class LoginComponent {
           this.responseMsg,
           GlobalConstants.error
         );
-      }
+      }, 
     );
   }
 }
