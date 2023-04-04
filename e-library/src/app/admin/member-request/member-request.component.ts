@@ -19,7 +19,7 @@ export class MemberRequestComponent implements AfterViewInit{
     this.dataSource.data = this.dataSource.data.filter(memberRequest => memberRequest.status === 'n/a');
   }
   dataSource = new MatTableDataSource(this.memberRequestService.getApplicants());
-  displayedColumns: string[] = ['position', 'name', 'roll', 'batch','session','program_level','mobile_number','email','address','approve'];
+  displayedColumns: string[] = ['position', 'name', 'roll', 'batch','session','program_level','mobile_number','email','address','approve','reject'];
 
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -33,6 +33,11 @@ export class MemberRequestComponent implements AfterViewInit{
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  rejectRow(row: MemberRequest){
+    row.status = 'rejected';
+    this.dataSource.data = this.dataSource.data.filter(item => item.status === "n/a");
   }
 
   approveRow(row: MemberRequest) {

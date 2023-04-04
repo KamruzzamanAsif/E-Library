@@ -1,4 +1,4 @@
-<section style="margin: 10%;">
+<section style="margin: 10% auto">
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange(sort)"
     class="mat-elevation-z8">
 
@@ -73,6 +73,14 @@
     </th>
     <td mat-cell *matCellDef="let element">
         <button mat-raised-button color="primary" *ngIf="element.status==='n/a'" (click)="approveRow(element)">Approve</button>
+    </td>
+</ng-container>
+<ng-container matColumnDef="reject">
+    <th mat-header-cell *matHeaderCellDef>
+      Reject
+    </th>
+    <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="warning" *ngIf="element.status==='n/a'" (click)="rejectRow(element)">Reject</button>
     </td>
 </ng-container>
 
