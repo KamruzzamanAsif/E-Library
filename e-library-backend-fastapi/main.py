@@ -8,6 +8,8 @@ from typing import Optional
 import mysql.connector
 import smtplib
 from email.mime.text import MIMEText
+from fastapi.responses import JSONResponse
+
 
 
 app = FastAPI()
@@ -191,7 +193,7 @@ async def search_books(category: str):
 
     # Check if any books were found
     if len(books) == 0:
-        return {"message": "No books found for this category"}
+        return JSONResponse(content={"message": "No books found for this category"})
     else:
         # Convert the result to a list of dictionaries
         book_list = []
@@ -236,7 +238,7 @@ def search_books_by_author(author: str):
 
     # Check if any books were found
     if len(books) == 0:
-        return {"message": "No books found for this author"}
+        return JSONResponse(content={"message": "No books found for this author"})
     else:
         # Convert the result to a list of dictionaries
         book_list = []
@@ -281,7 +283,7 @@ def search_books_by_name(book_name: str):
 
     # Check if any books were found
     if len(books) == 0:
-        return {"message": "No books found for this name"}
+        return JSONResponse(content={"message": "No books found for this name"})
     else:
         # Convert the result to a list of dictionaries
         book_list = []
@@ -306,4 +308,51 @@ def search_books_by_name(book_name: str):
         # Return the list of books as a JSON response
         return book_list
 
+
+
+# Get all unapproved users
+@app.get("/users/not_approved", response_model=list[User])
+def get_unapproved_users():
+    # MySQL Connection
+    db = get_db()
+    cursor = db.cursor()
+
+    # Query
+    query = "SELECT * FROM user WHERE status = 'false'"
+    
+    # Execute Query
+    cursor.execute(query)
+
+    # Get all rows that match the search criteria
+    unapproved_users = cursor.fetchall()
+    print(len(unapproved_users))
+    # Check if any users were found
+    if len(unapproved_users) == 0:
+        return JSONResponse(content={"message": "No unapproved users found"})
+    else:
+        # Convert the result to a list of User objects
+        unapproved_user_list = []
+        for unapproved_user in unapproved_users:
+            unapproved_user_list.append({
+                "id": unapproved_user[0],
+                "name": unapproved_user[1],
+                "roll": unapproved_user[2],
+                "batch": unapproved_user[3],
+                "session": unapproved_user[4],
+                "program_level": unapproved_user[5],
+                "mobile_number": unapproved_user[6],
+                "address": unapproved_user[7],
+                "email": unapproved_user[8],
+                "password": unapproved_user[9],
+                "status": unapproved_user[10],
+                "role": unapproved_user[11]
+            })
+
+        # Close the database connection
+        cursor.close()
+        db.close()
+
+        # Return the list of unapproved users as a JSON response
+        return unapproved_user_list
+    
 
