@@ -27,7 +27,7 @@
         </div>
         <div class="input-box">
           <span class="details">Program Level</span>
-          <input type="text" placeholder="BSSE/MSSE/MIT/PGDIT" formControlName="programLevel" required pattern="^[a-zA-Z ]{4}$"
+          <input type="text" placeholder="BSSE/MSSE/MIT/PGDIT" formControlName="programLevel" required pattern="^[a-zA-Z]+$"
           [class.invalid]="registrationForm.get('programLevel').invalid && registrationForm.get('programLevel').dirty">
           <div *ngIf="registrationForm.get('programLevel').invalid && registrationForm.get('programLevel').dirty" style="color: red">
             Only BSSE, MSSE, MIT, PGDIT are allowed

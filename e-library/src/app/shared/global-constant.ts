@@ -8,7 +8,7 @@ export class GlobalConstants {
     public static emailRegex:string = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\$';
     public static contactNumberRegex:string = '^\d{11}$';
     public static sessionRegex:string = '^\d{2}-\d{2}$';
-    public static programLevelReges:string = '^[a-zA-Z ]{4}$';
+    public static programLevelReges:string = '^[a-zA-Z]{2-4}$';
 
     // Variable 
     public static error:string = 'error';

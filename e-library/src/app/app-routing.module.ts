@@ -15,6 +15,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { CategoryComponent } from './components/category/category.component';
 import { AddBookComponent } from './admin/add-book/add-book.component';
 import { MemberRequestComponent } from './admin/member-request/member-request.component';
+import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {path:"", component:HomepageComponent},
@@ -32,6 +34,7 @@ const routes: Routes = [
   {path:"category",component:CategoryComponent},
   {path:"add-book",component:AddBookComponent},
   {path:"member-request", component:MemberRequestComponent}
+  {path:"dashboard",component:AppComponent}
 ];
 
 @NgModule({

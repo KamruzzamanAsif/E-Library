@@ -7,7 +7,7 @@ import { SnackBarService } from './snack-bar.service';
 })
 export class ApiService {
 
-  url = 'http://localhost:3000';
+  url = 'http://127.0.0.1:8000';
 
   constructor(private http: HttpClient, private snackBarService: SnackBarService) { }
 
@@ -15,14 +15,14 @@ export class ApiService {
     return this.http.get(this.url);
   }
 
-  signup(data: any) {
-    return this.http.post(this.url + '/user/signup', data, {
+  login(data: any) {
+    return this.http.post(this.url + '/user/login', JSON.stringify(data), {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
   }
 
-  login(data: any) {
-    return this.http.post(this.url + '/user/login', data, {
+  signup(data: any) {
+    return this.http.post(this.url + '/signup', JSON.stringify(data), {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
   }
