@@ -219,4 +219,7 @@ export class BookCatalogService {
   getBookToBeViewed(): Book {
     return this.bookToBeViewed;
   }
+  addNewBook(book:Book):void{
+    this.books.push(book);
+  }
 }

@@ -80,4 +80,7 @@ export class UsersService {
       }
     }
   }
+  addNewUser(user:Users):void{
+    this.users.push(user);
+  }
 }
