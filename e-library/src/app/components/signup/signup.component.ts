@@ -61,23 +61,24 @@ export class SignupComponent implements OnInit {
 
     console.log(data);
 
-    this.apiService.signup(data).subscribe((response: any) => {
-      console.log("RES: ", response);
-      this.ngxService.stop();
-      this.responseMsg = 'User Created Successfully';
-      this.snackBarService.openSnackBar(this.responseMsg, '');
-      this.router.navigate(['/login']);
-    }, (error) => {
-      console.log("Error: ", error)
-      this.ngxService.stop();
-      if (error.error?.detail) {
-        this.responseMsg = error.error?.detail;
-      }
-      else {
-        this.responseMsg = GlobalConstants.genericError;
-      }
-      this.snackBarService.openSnackBar(this.responseMsg, GlobalConstants.error);
-    });
+    this.apiService.signup(data).subscribe(
+      (response: any) => {
+        console.log("RES: ", response);
+        this.ngxService.stop();
+        this.responseMsg = 'User Created Successfully';
+        this.snackBarService.openSnackBar(this.responseMsg, '');
+        this.router.navigate(['/login']);
+      }, (error) => {
+        console.log("Error: ", error)
+        this.ngxService.stop();
+        if (error.error?.detail) {
+          this.responseMsg = error.error?.detail;
+        }
+        else {
+          this.responseMsg = GlobalConstants.genericError;
+        }
+        this.snackBarService.openSnackBar(this.responseMsg, GlobalConstants.error);
+      });
 
   }
 

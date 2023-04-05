@@ -34,7 +34,6 @@ const routes: Routes = [
   {path:"category",component:CategoryComponent},
   {path:"add-book",component:AddBookComponent},
   {path:"member-request", component:MemberRequestComponent}
-  {path:"dashboard",component:AppComponent}
 ];
 
 @NgModule({
