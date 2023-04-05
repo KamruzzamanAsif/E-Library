@@ -1,6 +1,6 @@
 from model import User, Book, BookLending
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Body, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.params import Depends
 from pydantic import BaseModel
@@ -16,7 +16,9 @@ app = FastAPI()
 
 origins = [
     "http://localhost",
+    "https://localhost",
     "http://localhost:8080",
+    "http://localhost:4200"
 ]
 
 app.add_middleware(
@@ -33,46 +35,54 @@ def get_db():
     db = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Asif1217*",
+        password="123456",
         database="e_library"
     )
     return db
 
 
-
-# define a login endpoint
+# define a login endpoint [DONE]
 @app.post("/login")
-async def login(username: str, password: str):
+async def login(email: str = Body(), password: str = Body()):
     db = get_db()
     cursor = db.cursor()
-    query = "SELECT * FROM user WHERE name = %s AND password = %s"
-    values = (username, password)
+    print("Working...")
+    query = "SELECT * FROM user WHERE email = %s AND password = %s"
+    values = (email, password)
     cursor.execute(query, values)
+
     result = cursor.fetchone()
+
     if result is None:
-        raise HTTPException(status_code=401, detail="Invalid username or password")
-    elif result[10] == 'false':
-        raise HTTPException(status_code=401, detail="User is not authorized by admin")
+        raise HTTPException(
+            status_code=401, detail="Invalid username or password")
+    elif result[9] == 'false':
+        raise HTTPException(
+            status_code=401, detail="User is not authorized by admin")
     else:
         return {"yes"}
 
 
-
-# Route to create a new user
-@app.post("/signup", response_model= User)
-async def signup(user: User, db: mysql.connector.connection.MySQLConnection = Depends(get_db)):
+# Route to create a new user [DONE]
+@app.post("/signup")
+async def signup(user: str = Body(), db: mysql.connector.connection.MySQLConnection = Depends(get_db)):
     # Check if the username or email is already in use
+    print("RESULT: ", user)
     cursor = db.cursor()
     cursor.execute("SELECT * FROM user WHERE name = %s OR email = %s", (user.name, user.email))
     result = cursor.fetchone()
+
     if result:
         raise HTTPException(status_code=400, detail="Username or email already in use")
 
-    # Insert the new user into the database
-    cursor.execute("INSERT INTO user (id, name, roll, batch, session, program_level, mobile_number, address, email, password, status, role) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (user.id, user.name, user.roll, user.batch, user.session, user.program_level, user.mobile_number, user.address, user.email, user.password, user.status, user.role))
-    db.commit()
+    else:
+        # Insert the new user into the database
+        cursor.execute("INSERT INTO user (name, roll, batch, session, program_level, mobile_number, address, email, password, status, role) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                       (user.name, user.roll, user.batch, user.session, user.program_level, user.mobile_number, user.address, user.email, user.password, user.status, user.role))
+        db.commit()
 
-    return {"message": "User created successfully"}
+        return {"User created successfully"}
+
 
 
 @app.post("/forgot_password")
@@ -109,20 +119,20 @@ def forgot_password(email: str):
         cursor.close()
         db.close()
 
-
-@app.post("/books")
+# [DONE]
+@app.post("/add-books")
 def add_book(book: Book):
     try:
         db = get_db()
         cursor = db.cursor()
-        sql = "INSERT INTO book (id, title, author, description, softcopy, shelf, total_quantity, available_quantity, imageUrl, softcopyUrl, category) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        values = (book.id, book.title, book.author, book.description, book.softcopy, book.shelf, book.total_quantity, book.available_quantity, book.imageUrl, book.softcopyUrl, book.category)
+        sql = "INSERT INTO book (id, title, author, description, shelf, total_quantity, available_quantity, imageUrl, softcopyUrl, category) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        values = (book.id, book.title, book.author, book.description, book.shelf, book.total_quantity, book.available_quantity, book.imageUrl, book.softcopyUrl, book.category)
         cursor.execute(sql, values)
         db.commit()
         return {"message": "Book added successfully"}
-    except mysql.connector.Error as error:
-        print("Error connecting to database: ", error)
-        raise HTTPException(status_code=500, detail="Internal server error")
+    # except mysql.connector.Error as error:
+    #     print("Error connecting to database: ", error)
+    #     raise HTTPException(status_code=500, detail="Internal server error")
     finally:
         cursor.close()
         db.close()
@@ -139,8 +149,8 @@ def update_book(book_id: int, book: Book):
         if result is None:
             raise HTTPException(status_code=404, detail="Book not found")
         # update the book in the database
-        sql = "UPDATE book SET id= %s, title = %s, author = %s, description = %s, softcopy = %s, shelf = %s, total_quantity = %s, available_quantity = %s, imageUrl = %s, softcopyUrl = %s, category = %s WHERE id = %s"
-        values = (book.id, book.title, book.author, book.description, book.softcopy, book.shelf, book.total_quantity, book.available_quantity, book.imageUrl, book.softcopyUrl, book.category, book_id)
+        sql = "UPDATE book SET id= %s, title = %s, author = %s, description = %s, shelf = %s, total_quantity = %s, available_quantity = %s, imageUrl = %s, softcopyUrl = %s, category = %s WHERE id = %s"
+        values = (book.id, book.title, book.author, book.description, book.shelf, book.total_quantity, book.available_quantity, book.imageUrl, book.softcopyUrl, book.category, book_id)
         cursor.execute(sql, values)
         db.commit()
         return {"message": "Book updated successfully"}
@@ -353,7 +363,7 @@ def search_books_by_name(book_name: str):
 
 
 
-# Get all unapproved users
+# Get all unapproved users [DONE]
 @app.get("/users/not_approved", response_model=list[User])
 def get_unapproved_users():
     # MySQL Connection
@@ -377,18 +387,17 @@ def get_unapproved_users():
         unapproved_user_list = []
         for unapproved_user in unapproved_users:
             unapproved_user_list.append({
-                "id": unapproved_user[0],
-                "name": unapproved_user[1],
-                "roll": unapproved_user[2],
-                "batch": unapproved_user[3],
-                "session": unapproved_user[4],
-                "program_level": unapproved_user[5],
-                "mobile_number": unapproved_user[6],
-                "address": unapproved_user[7],
-                "email": unapproved_user[8],
-                "password": unapproved_user[9],
-                "status": unapproved_user[10],
-                "role": unapproved_user[11]
+                "name": unapproved_user[0],
+                "roll": unapproved_user[1],
+                "batch": unapproved_user[2],
+                "session": unapproved_user[3],
+                "program_level": unapproved_user[4],
+                "mobile_number": unapproved_user[5],
+                "address": unapproved_user[6],
+                "email": unapproved_user[7],
+                "password": unapproved_user[8],
+                "status": unapproved_user[9],
+                "role": unapproved_user[10]
             })
 
         # Close the database connection
@@ -469,6 +478,50 @@ def get_all_users():
         user_list = []
         for user in users:
             user_list.append({
+                "name": user[0],
+                "roll": user[1],
+                "batch": user[2],
+                "session": user[3],
+                "program_level": user[4],
+                "mobile_number": user[5],
+                "address": user[6],
+                "email": user[7],
+                "password": user[8],
+                "status": user[9],
+                "role": user[10]
+            })
+
+        # Close the database connection
+        cursor.close()
+        db.close()
+        
+        print(user_list)
+
+        # Return the list of unapproved users as a JSON response
+        return user_list
+    
+
+    # MySQL Connection
+    db = get_db()
+    cursor = db.cursor()
+
+    # Query
+    query = "SELECT * FROM user"
+    
+    # Execute Query
+    cursor.execute(query)
+
+    # Get all rows that match the search criteria
+    users = cursor.fetchall()
+
+    # Check if any users were found
+    if len(users) == 0:
+        return JSONResponse(content={"message": "No unapproved users found"})
+    else:
+        # Convert the result to a list of User objects
+        user_list = []
+        for user in users:
+            user_list.append({
                 "id": user[0],
                 "name": user[1],
                 "roll": user[2],
@@ -491,9 +544,11 @@ def get_all_users():
         return user_list
     
 
-# Approve a user
-@app.post("/users/approve_a_user")
-def approve_user(user_email: str):
+# Approve a user [DONE]
+@app.post("/users/verify_user")
+def verify_user(user_email: str = Body(), status: str = Body()):
+    
+    print(user_email, status)
     # MySQL Connection
     db = get_db()
     cursor = db.cursor()
@@ -510,18 +565,33 @@ def approve_user(user_email: str):
     # If no user found with the specified email and false status, raise an exception
     if user is None:
         raise HTTPException(status_code=404, detail="User not found or already approved")
+    
+    if status == "true":
 
-    # If user found, update the status to true
-    query = "UPDATE user SET status = 'true' WHERE email = %s"
-    cursor.execute(query, (user_email,))
-    db.commit()
+        # If user found, update the status to true
+        query = "UPDATE user SET status = %s WHERE email = %s"
+        print(cursor.execute(query, (status, user_email)))
+        db.commit()
 
-    # Close the database connection
-    cursor.close()
-    db.close()
+        # Close the database connection
+        cursor.close()
+        db.close()
 
-    # Return  as a JSON response
-    return {"message": f"User with email {user_email} has been approved."}
+        # Return  as a JSON response
+        return {"message": f"User with email {user_email} has been approved."}
+    
+    else:
+        
+        # If user found, update the status to true
+        query = "DELETE from user WHERE email = %s"
+        print(cursor.execute(query, (user_email,)))
+        db.commit()
+
+        # Close the database connection
+        cursor.close()
+        db.close()
+        
+        return {"message": f"User with email {user_email} has been rejected."}
 
 
 

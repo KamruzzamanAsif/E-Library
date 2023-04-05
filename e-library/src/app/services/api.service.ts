@@ -16,7 +16,7 @@ export class ApiService {
   }
 
   login(data: any) {
-    return this.http.post(this.url + '/user/login', JSON.stringify(data), {
+    return this.http.post(this.url + '/login', JSON.stringify(data), {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
   }
@@ -26,4 +26,29 @@ export class ApiService {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
   }
+
+  addBooks(data: any) {
+    return this.http.post(this.url + '/add-books', JSON.stringify(data), {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  allUsers() {
+    return this.http.get(this.url + '/users/all_users', {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  not_approved_users() {
+    return this.http.get(this.url + '/users/not_approved', {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  verify_user(data: any) {
+    return this.http.post(this.url + '/users/verify_user', JSON.stringify(data), {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
 }

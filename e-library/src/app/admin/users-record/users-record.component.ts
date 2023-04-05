@@ -9,15 +9,22 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./users-record.component.css']
 })
 export class UsersRecordComponent {
-  constructor(private usersService:UsersService, private router:Router){}
-  users:Users[]=[];
 
-  ngOnInit():void{
-    this.users=this.usersService.getUsers();
+  constructor(private usersService: UsersService, private router: Router) { }
+
+  displayedColumns: string[] = ['name', 'roll', 'session', 'program_level', 'status'];
+  columnsToDisplay: string[] = this.displayedColumns.slice();
+  users: any | Users[] = [];
+
+  ngOnInit(): void {
+    this.usersService.getUsers().subscribe((users: Users[]) => {
+      this.users = users;
+      console.log(this.users);
+    });
   }
 
-  viewUser(index:number):void{
-    this.usersService.setUserToBeViewed(index);
+  viewUser(index: number): void {
+    this.usersService.setUserToBeViewed(this.users[index]);
     this.router.navigate(["users-settings"])
   }
 }

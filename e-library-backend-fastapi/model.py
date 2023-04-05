@@ -2,7 +2,6 @@ from pydantic import BaseModel
 from typing import Optional
 
 class User(BaseModel):
-    id: int = 0
     name: str = ""
     roll: Optional[str] = None
     batch: Optional[str] = None
@@ -17,14 +16,13 @@ class User(BaseModel):
 
 
 class Book(BaseModel):
-    id: int = 0
+    id: str = ""
     title: str = ""
     author: str = ""
     description: str = ""
-    softcopy: str = ""
     shelf: str = ""
-    total_quantity: str = ""
-    available_quantity: str = ""
+    total_quantity: int = 0
+    available_quantity: int = 0
     imageUrl: str = ""
     softcopyUrl: str = ""
     category: str = ""
