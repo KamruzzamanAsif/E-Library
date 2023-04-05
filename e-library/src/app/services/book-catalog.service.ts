@@ -252,4 +252,7 @@ export class BookCatalogService {
       this.snackBarService.openSnackBar(this.responseMsg, GlobalConstants.error);
     });
   }
+
+  deleteBook(bookID: any): void {
+  }
 }

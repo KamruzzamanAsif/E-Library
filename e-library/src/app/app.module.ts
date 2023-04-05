@@ -19,6 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminModule } from "./admin/admin.module";
 import { CategoryComponent } from './components/category/category.component';
+import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -45,6 +48,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         SignupComponent,
         LoginComponent,
         CategoryComponent,
+        DialogBoxComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -58,6 +62,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         FormsModule,
         MatSnackBarModule,
         AdminModule,
+        MatDialogModule,
+        MatButtonModule
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
