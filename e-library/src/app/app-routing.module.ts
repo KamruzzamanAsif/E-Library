@@ -16,6 +16,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { AddBookComponent } from './admin/add-book/add-book.component';
 import { MemberRequestComponent } from './admin/member-request/member-request.component';
 import { BookRequestComponent } from './admin/book-request/book-request.component';
+import { BookReturnComponent } from './admin/book-return/book-return.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path:"add-book",component:AddBookComponent},
   {path:"member-request", component:MemberRequestComponent},
   {path:"book-request",component:BookRequestComponent},
+  {path:"book-return", component:BookReturnComponent},
   {path:"about",component:AboutComponent}
 ];
 
