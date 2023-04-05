@@ -10,13 +10,19 @@ import {Book} from 'src/app/models/book'
 })
 export class AllBooksRecordComponent {
   constructor(private router:Router, private bookService:BookCatalogService){}
+
   books:Book[]=[];
 
   ngOnInit():void{
-    this.books=this.bookService.getBooks();
+    this.bookService.getBooks().subscribe((books: Book[]) => {
+      this.books = books;
+      console.log(this.books);
+    });
   }
+  
   editBook(index:number):void{
-    this.bookService.setBookToBeViewed(index);
+    var book = this.books[index];
+    this.bookService.setBookToBeViewed(book);
     this.router.navigate(['all-book-settings']);
   }
 }

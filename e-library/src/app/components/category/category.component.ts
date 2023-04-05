@@ -27,7 +27,8 @@ export class CategoryComponent {
     });
   }
   viewDetails(index: number): void{
-    this.bookService.setBookToBeViewed(index);
+    var book = this.books[index];
+    this.bookService.setBookToBeViewed(book);
     this.router.navigate(["book-details"]);
   }
 

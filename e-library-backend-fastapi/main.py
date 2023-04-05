@@ -139,7 +139,7 @@ def add_book(book: Book):
 
 
 @app.put("/books/{book_id}")
-def update_book(book_id: int, book: Book):
+def update_book(book_id: str, book: Book):
     try:
         db = get_db()
         cursor = db.cursor()
@@ -163,7 +163,7 @@ def update_book(book_id: int, book: Book):
 
 
 @app.delete("/books/{book_id}")
-async def delete_book(book_id: int):
+async def delete_book(book_id: str):
     # Create cursor object to execute SQL queries
     db = get_db()
     cursor = db.cursor()
@@ -211,13 +211,12 @@ async def search_books():
             "title": book[1],
             "author": book[2],
             "description": book[3],
-            "softcopy": book[4],
-            "shelf": book[5],
-            "total_quantity": book[6],
-            "available_quantity": book[7],
-            "imageUrl": book[8],
-            "softcopyUrl": book[9],
-            "category": book[10]
+            "shelf": book[4],
+            "total_quantity": book[5],
+            "available_quantity": book[6],
+            "imageUrl": book[7],
+            "softcopyUrl": book[8],
+            "category": book[9]
         })
 
         # close db connection

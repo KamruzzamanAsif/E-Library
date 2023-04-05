@@ -17,12 +17,16 @@ export class BookCatalogComponent implements OnInit{
   catalogSize: number = 0;
 
   ngOnInit(): void{
-    this.books = this.bookCatalogService.getBooks();
+    this.books = this.bookCatalogService.getBooks().subscribe((books: Book[]) => {
+      this.books = books;
+      console.log(this.books);
+    });
     this.catalogSize = this.books.length;
   }
 
   viewDetails(index: number): void{
-    this.bookCatalogService.setBookToBeViewed(index);
+    var book = this.books[index];
+    this.bookCatalogService.setBookToBeViewed(book);
     this.router.navigate(["book-details"]);
   }
 }

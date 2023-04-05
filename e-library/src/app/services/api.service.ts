@@ -27,11 +27,6 @@ export class ApiService {
     });
   }
 
-  addBooks(data: any) {
-    return this.http.post(this.url + '/add-books', JSON.stringify(data), {
-      headers: new HttpHeaders().set('Content-Type', 'application/json')
-    });
-  }
 
   allUsers() {
     return this.http.get(this.url + '/users/all_users', {
@@ -51,4 +46,21 @@ export class ApiService {
     });
   }
 
+  allBooks() {
+    return this.http.get(this.url + '/books/all_books', {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  addBooks(data: any) {
+    return this.http.post(this.url + '/add-books', JSON.stringify(data), {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
+
+  updateBook(bookId: string, bookData: any) {
+    return this.http.put(this.url + `/books/${bookId}`, JSON.stringify(bookData), {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
 }

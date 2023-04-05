@@ -1,12 +1,12 @@
 export class Book{
+  id: string = "";
   title: string = "";
   author: string = "";
   description: string = "";
-  softcopy: string = "";
   shelf: string = "";
   total_quantity: number = 0;
   available_quantity: number = 0;
   imageUrl: string = "";
-  detailsUrl: string = "";
+  softCopyUrl: string = "";
   category:string=""
 }

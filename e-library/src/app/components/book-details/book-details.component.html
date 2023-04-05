@@ -8,7 +8,7 @@
       <p class="book-author">by {{book.author}}</p>
       <div class="book-description">{{book.description}}</div>
       <div class="book-quantity">Available Quantity: <span class="{{book.available_quantity > 0 ? 'available' : 'not-available'}}">{{book.available_quantity}}</span></div>
-      <div class="book-format">Soft Copy: <span class="{{book.softcopy === 'No' ? 'not-available' : 'available'}}">{{book.softcopy}}</span></div>
+      <div class="book-format">Soft Copy: <span class="{{book.softCopyUrl === 'No' ? 'not-available' : 'available'}}">{{book.softCopyUrl}}</span></div>
       <button class="request-button" *ngIf="book.available_quantity > 0">Request This Book</button>
     </div>
     

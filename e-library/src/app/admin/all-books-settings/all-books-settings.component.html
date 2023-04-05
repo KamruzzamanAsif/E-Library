@@ -1,24 +1,58 @@
 <section style="margin: 10%;">
     <div class="container">
         <form>
+            
             <div class="mb-3 mt-3">
-              <label for="title">Title:</label>
-              <input type="text" class="form-control" id="title" placeholder="Edit title" name="title" [(ngModel)]="book.title">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title" placeholder="Edit title" name="title"
+                    [(ngModel)]="book.title">
             </div>
             <div class="mb-3 mt-3">
                 <label for="author">Author:</label>
-                <input type="text" class="form-control" id="author" placeholder="Edit author nane" name="author" [(ngModel)]="book.author">
+                <input type="text" class="form-control" id="author" placeholder="Edit author nane" name="author"
+                    [(ngModel)]="book.author">
             </div>
+            <div class="mb-3 mt-3">
+                <label for="imageUrl">Shelf</label>
+                <input type="text" class="form-control" id="shelf" placeholder="Edit Shelf Location" name="shelf"
+                    [(ngModel)]="book.shelf">
+            </div>
+
             <div class="mb-3 mt-3">
                 <label for="total">Total quantity:</label>
-                <input type="number" class="form-control" id="total" placeholder="Edit total quantity" name="total" [(ngModel)]="book.total_quantity">
+                <input type="number" class="form-control" id="total" placeholder="Edit total quantity" name="total"
+                    [(ngModel)]="book.total_quantity">
             </div>
+
+            <div class="mb-3 mt-3">
+                <label for="total">Available quantity:</label>
+                <input type="number" class="form-control" id="availableCopies" placeholder="Edit available quantity"
+                    name="availableCopies" [(ngModel)]="book.available_quantity">
+            </div>
+
             <div class="mb-3 mt-3">
                 <label for="imageUrl">Image URL:</label>
-                <input type="text" class="form-control" id="imageUrl" placeholder="Edit cover photo" name="imageUrl" [(ngModel)]="book.imageUrl">
+                <input type="text" class="form-control" id="imageUrl" placeholder="Edit cover photo" name="imageUrl"
+                    [(ngModel)]="book.imageUrl">
             </div>
-    
-            <button type="submit" class="btn btn-primary" (click)="updated()">Submit</button>
-          </form>
+
+            <div class="mb-3 mt-3">
+                <label for="softcopyUrl">Softcopy URL:</label>
+                <input type="text" class="form-control" id="softcopyUrl" placeholder="Edit softcopy URL"
+                    name="softcopyUrl" [(ngModel)]="book.softCopyUrl">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="category">Category:</label>
+                <select class="form-control" id="category" name="category" [(ngModel)]="book.category">
+                    <option value="" disabled selected>Select a category</option>
+                    <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+                </select>
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary" (click)="updateBooks()">Submit</button>
+        </form>
     </div>
 </section>
