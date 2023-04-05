@@ -1,22 +1,44 @@
-<section style="margin-top: 10%;">
-    <div class="container">
+<section>
+    <mat-toolbar class="mat-elevation-z5" style="margin-top: 2rem; font-family: myPoppins;">
+        <mat-icon>person</mat-icon> &nbsp; &nbsp; <span>All Books</span>
+    </mat-toolbar>
+
+    
+
+    <div class="container mat-elevation-z5">
         <div class="row">
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Title</th>
                         <th>Author</th>
+                        <th>Shelf</th>
                         <th>Total</th>
                         <th>Available</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let book of books;let i=index">
                         <td>{{book.title}}</td>
                         <td>{{book.author}}</td>
+                        <td>{{book.shelf}}</td>
                         <td>{{book.total_quantity}}</td>
                         <td>{{book.available_quantity}}</td>
-                        <td><button type="button" class="btn btn-primary" (click)="editBook(i)">Edit</button></td>
+                        <td>
+                            <button mat-raised-button color="primary" (click)="editBook(i)" extended>
+                                <mat-icon>edit</mat-icon>
+                                Edit
+                            </button>
+                        </td>
+                        <td>
+                            <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
+                            <button mat-raised-button color="warn" (click)="deleteBook(i)" extended>
+                                <mat-icon>delete</mat-icon>
+                                Delete
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

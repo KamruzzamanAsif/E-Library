@@ -63,4 +63,10 @@ export class ApiService {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
   }
+
+  deleteBook(bookId: string) {
+    return this.http.delete(this.url + `/books/${bookId}`, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    });
+  }
 }

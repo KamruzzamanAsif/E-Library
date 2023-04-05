@@ -18,9 +18,12 @@ import { AllBooksRecordComponent } from './all-books-record/all-books-record.com
 import { AllBooksSettingsComponent } from './all-books-settings/all-books-settings.component';
 import { FormsModule } from '@angular/forms';
 import { AddBookComponent } from './add-book/add-book.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule} from '@angular/material/icon';
 import { MemberRequestComponent } from './member-request/member-request.component';
-import { BookRequestComponent } from './book-request/book-request.component';
+import { BookRequestComponent } from './book-request/book-request.component'
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDialogModule} from '@angular/material/dialog';
+import { IssuedRecordComponent } from './issued-record/issued-record.component'
 import { BookReturnComponent } from './book-return/book-return.component'
 
 @NgModule({
@@ -35,6 +38,7 @@ import { BookReturnComponent } from './book-return/book-return.component'
     MemberRequestComponent,
     BookRequestComponent,
     BookReturnComponent,
+    IssuedRecordComponent,
   ],
   imports: [
     CommonModule,
@@ -48,7 +52,9 @@ import { BookReturnComponent } from './book-return/book-return.component'
     MatIconModule,
     MatTableModule,
     MatSortModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatToolbarModule,
   ],
   exports: [
     AdminDashboardComponent,

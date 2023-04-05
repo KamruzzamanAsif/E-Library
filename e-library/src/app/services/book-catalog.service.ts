@@ -252,4 +252,24 @@ export class BookCatalogService {
       this.snackBarService.openSnackBar(this.responseMsg, GlobalConstants.error);
     });
   }
+
+  deleteBook(bookID: any): any {
+    this.apiService.deleteBook(bookID).subscribe((response: any) => {
+      console.log("RES: ", response);
+      this.ngxService.stop();
+      this.responseMsg = response?.message;
+      this.snackBarService.openSnackBar(this.responseMsg, '');
+      this.router.navigate(['/all-books-record']);
+    }, (error) => {
+      console.log("Error: ", error)
+      this.ngxService.stop();
+      if (error.error?.detail) {
+        this.responseMsg = error.error?.detail;
+      }
+      else {
+        this.responseMsg = GlobalConstants.genericError;
+      }
+      this.snackBarService.openSnackBar(this.responseMsg, GlobalConstants.error);
+    });
+  }
 }
