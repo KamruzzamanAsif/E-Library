@@ -18,6 +18,7 @@ import { MemberRequestComponent } from './admin/member-request/member-request.co
 import { BookRequestComponent } from './admin/book-request/book-request.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
 import { AppComponent } from './app.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   {path:"", component:HomepageComponent},
@@ -35,7 +36,8 @@ const routes: Routes = [
   {path:"category",component:CategoryComponent},
   {path:"add-book",component:AddBookComponent},
   {path:"member-request", component:MemberRequestComponent},
-  {path:"book-request",component:BookRequestComponent}
+  {path:"book-request",component:BookRequestComponent},
+  {path:"about",component:AboutComponent}
 ];
 
 @NgModule({

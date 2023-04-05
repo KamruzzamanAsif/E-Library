@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminModule } from "./admin/admin.module";
 import { CategoryComponent } from './components/category/category.component';
+import { AboutComponent } from './components/about/about.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -45,6 +46,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         SignupComponent,
         LoginComponent,
         CategoryComponent,
+        AboutComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
