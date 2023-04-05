@@ -11,7 +11,8 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
 
   title = 'e-library';
-  isAdminLoggedIn:boolean = false;
+  getLoginStatus:boolean = false;
+  isUserLoggedIn: boolean = false;
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -22,6 +23,7 @@ export class AppComponent {
         const navbar = window.document.getElementById("header");
 
       }
+
       if (event instanceof NavigationEnd) {
         const currentRoute = this.router.url;
         const navbar = window.document.getElementById("header");
@@ -38,6 +40,9 @@ export class AppComponent {
       }
     });
 
-    this.isAdminLoggedIn = this.authService.getIsAdminLoggedIn();
+    this.getLoginStatus = this.authService.getLoginStatus();
+    this.isUserLoggedIn = this.authService.getIsUserLoggedIn();
+
+    console.log("STAT: ", this.getLoginStatus, " USR: ", this.isUserLoggedIn);
   }
 }

@@ -8,6 +8,7 @@ import { SnackBarService } from './snack-bar.service';
 export class ApiService {
 
   url = 'http://127.0.0.1:8000';
+  boundary: any = Math.random().toString().substr(2);
 
   constructor(private http: HttpClient, private snackBarService: SnackBarService) { }
 
@@ -69,4 +70,9 @@ export class ApiService {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     });
   }
+
+  addImage(formData: any) {
+    return this.http.post(this.url + '/upload-image', formData);
+  }
+
 }

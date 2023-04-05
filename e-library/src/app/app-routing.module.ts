@@ -43,7 +43,8 @@ const routes: Routes = [
   {path:"book-return", component:BookReturnComponent},
   {path:"issued-record", component:IssuedRecordComponent},
   {path:"about",component:AboutComponent},
-  {path:'borrowed-details', component:BorrowedDetailsComponent}
+  {path:'borrowed-details', component:BorrowedDetailsComponent},
+  {path:'user-dashboard', component: DashboardComponent}
 ];
 
 @NgModule({
