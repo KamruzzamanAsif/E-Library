@@ -12,7 +12,7 @@ export class UsersRecordComponent {
 
   constructor(private usersService: UsersService, private router: Router) { }
 
-  displayedColumns: string[] = ['name', 'roll', 'session', 'program_level', 'status'];
+  displayedColumns: string[] = ['name', 'roll', 'session', 'program_level', 'email', 'mobile_number', 'address'];
   columnsToDisplay: string[] = this.displayedColumns.slice();
   users: any | Users[] = [];
 

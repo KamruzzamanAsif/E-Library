@@ -35,7 +35,7 @@ def get_db():
     db = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Asif1217*",
+        password="123456",
         database="e_library"
     )
     return db
@@ -461,7 +461,7 @@ def get_all_users():
     cursor = db.cursor()
 
     # Query
-    query = "SELECT * FROM user"
+    query = "SELECT * FROM user where role not in ('admin')"
     
     # Execute Query
     cursor.execute(query)
