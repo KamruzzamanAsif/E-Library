@@ -33,7 +33,7 @@ const routes: Routes = [
   {path:"signup", component: SignupComponent},
   {path:"category",component:CategoryComponent},
   {path:"add-book",component:AddBookComponent},
-  {path:"member-request", component:MemberRequestComponent}
+  {path:"member-request", component:MemberRequestComponent},
   {path:"dashboard",component:AppComponent}
 ];
 
