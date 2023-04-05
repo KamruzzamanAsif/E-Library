@@ -20,9 +20,15 @@ import { FormsModule } from '@angular/forms';
 import { AddBookComponent } from './add-book/add-book.component';
 import { MatIconModule} from '@angular/material/icon';
 import { MemberRequestComponent } from './member-request/member-request.component';
+<<<<<<< HEAD
 import { BookRequestComponent } from './book-request/book-request.component'
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
+import { BookReturnComponent } from './book-return/book-return.component';
+=======
+import { BookRequestComponent } from './book-request/book-request.component';
+import { BookReturnComponent } from './book-return/book-return.component'
+>>>>>>> 6797c916530fc37d30a3a583c399b2636c0ab7f6
 
 @NgModule({
   declarations: [
@@ -35,6 +41,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     AddBookComponent,
     MemberRequestComponent,
     BookRequestComponent,
+    BookReturnComponent,
   ],
   imports: [
     CommonModule,

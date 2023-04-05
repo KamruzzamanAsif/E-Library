@@ -19,9 +19,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminModule } from "./admin/admin.module";
 import { CategoryComponent } from './components/category/category.component';
+<<<<<<< HEAD
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+=======
+import { AboutComponent } from './components/about/about.component';
+>>>>>>> 6797c916530fc37d30a3a583c399b2636c0ab7f6
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
