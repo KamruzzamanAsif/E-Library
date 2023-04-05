@@ -119,20 +119,20 @@ def forgot_password(email: str):
         cursor.close()
         db.close()
 
-
-@app.post("/books")
+# [DONE]
+@app.post("/add-books")
 def add_book(book: Book):
     try:
         db = get_db()
         cursor = db.cursor()
-        sql = "INSERT INTO book (id, title, author, description, softcopy, shelf, total_quantity, available_quantity, imageUrl, softcopyUrl, category) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        values = (book.id, book.title, book.author, book.description, book.softcopy, book.shelf, book.total_quantity, book.available_quantity, book.imageUrl, book.softcopyUrl, book.category)
+        sql = "INSERT INTO book (id, title, author, description, shelf, total_quantity, available_quantity, imageUrl, softcopyUrl, category) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        values = (book.id, book.title, book.author, book.description, book.shelf, book.total_quantity, book.available_quantity, book.imageUrl, book.softcopyUrl, book.category)
         cursor.execute(sql, values)
         db.commit()
         return {"message": "Book added successfully"}
-    except mysql.connector.Error as error:
-        print("Error connecting to database: ", error)
-        raise HTTPException(status_code=500, detail="Internal server error")
+    # except mysql.connector.Error as error:
+    #     print("Error connecting to database: ", error)
+    #     raise HTTPException(status_code=500, detail="Internal server error")
     finally:
         cursor.close()
         db.close()
@@ -149,8 +149,8 @@ def update_book(book_id: int, book: Book):
         if result is None:
             raise HTTPException(status_code=404, detail="Book not found")
         # update the book in the database
-        sql = "UPDATE book SET id= %s, title = %s, author = %s, description = %s, softcopy = %s, shelf = %s, total_quantity = %s, available_quantity = %s, imageUrl = %s, softcopyUrl = %s, category = %s WHERE id = %s"
-        values = (book.id, book.title, book.author, book.description, book.softcopy, book.shelf, book.total_quantity, book.available_quantity, book.imageUrl, book.softcopyUrl, book.category, book_id)
+        sql = "UPDATE book SET id= %s, title = %s, author = %s, description = %s, shelf = %s, total_quantity = %s, available_quantity = %s, imageUrl = %s, softcopyUrl = %s, category = %s WHERE id = %s"
+        values = (book.id, book.title, book.author, book.description, book.shelf, book.total_quantity, book.available_quantity, book.imageUrl, book.softcopyUrl, book.category, book_id)
         cursor.execute(sql, values)
         db.commit()
         return {"message": "Book updated successfully"}

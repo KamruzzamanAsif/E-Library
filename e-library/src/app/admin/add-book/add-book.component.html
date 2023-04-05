@@ -1,12 +1,12 @@
-<section style="margin: 10%;">
+<section style="margin: 20%;">
   <div class="container">
-    <form class="example-form">
+    <form class="example-form" [formGroup]="books" ngNativeValidate>
       <div class="row">
         <div class="col">
           <mat-form-field hintLabel="Max 255 characters" appearance="fill">
             <mat-label>Book Title</mat-label>
             <input matInput #input maxlength="255" placeholder="Ex. Discrete Mathematics and Its Applications"
-              id="title" name="title" value="" formControlName="title" required>
+              id="title" name="title" value="" formControlName="bookTitle" required>
             <mat-hint align="end">{{input.value.length}}/255</mat-hint>
           </mat-form-field>
         </div>
@@ -14,7 +14,8 @@
         <div class="col">
           <mat-form-field hintLabel="Max 255 characters" appearance="fill">
             <mat-label>Author's Name</mat-label>
-            <input matInput #input maxlength="255" placeholder="Ex. Rosen" id="author" name="author" value="" required>
+            <input matInput #input maxlength="255" placeholder="Ex. Rosen" id="author" name="author" value=""
+              formControlName="bookAuthor" required>
             <mat-hint align="end">{{input.value.length}}/255</mat-hint>
           </mat-form-field>
         </div>
@@ -26,7 +27,8 @@
           <input type="text" placeholder="" aria-label="Number" matInput [formControl]="myControl"
             [matAutocomplete]="auto">
           <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions | async" id="category" name="category" [value]="option">
+            <mat-option *ngFor="let option of filteredOptions | async" id="category" name="category" [value]="option"
+              (click)="onOptionSelected(option)">
               {{option}}
             </mat-option>
           </mat-autocomplete>
@@ -38,39 +40,64 @@
         <mat-form-field appearance="fill" floatLabel="always">
           <mat-label>Total Amount</mat-label>
           <input matInput type="number" id="totalQuantity" name="totalQuantity" value="" class="example-right-align"
-            placeholder="0">
+            placeholder="0" formControlName="availableCopies">
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+
+        <div class="col">
+          <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>Shelf Number</mat-label>
+            <input matInput type="text" id="bookShelf" name="bookShelf" value="" class="example-right-align"
+              placeholder="0" formControlName="bookShelf">
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>Book ID</mat-label>
+            <input matInput type="text" id="bookId" name="bookId" value="" class="example-right-align"
+              placeholder="eg. OS14" formControlName="bookID">
+          </mat-form-field>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+        <mat-form-field appearance="fill" floatLabel="always">
+          <mat-label>Soft Copy URL</mat-label>
+          <input matInput type="text" id="soft_copy_url" name="soft_copy_url" value="" class="example-right-align"
+            placeholder="http://unsplash.com/12542 (N/A if not available)" formControlName="softCopyURL">
         </mat-form-field>
       </div>
 
       <div class="row">
         <mat-form-field appearance="fill">
           <mat-label>Description</mat-label>
-          <textarea matInput></textarea>
+          <textarea matInput formControlName="description"></textarea>
         </mat-form-field>
       </div>
 
-      <div class="row">
+      <!-- <div class="row">
         <mat-radio-group [formControl]="floatLabelControl">
           <mat-label>SoftCopy Available: </mat-label>
           <mat-radio-button>Yes</mat-radio-button>
           <mat-radio-button>No</mat-radio-button>
         </mat-radio-group>
-      </div>
-
-      <div class="col">
-        <mat-form-field hintLabel="Max 255 characters" appearance="fill">
-          <mat-label>Soft Copy URL</mat-label>
-          <input matInput #input maxlength="255" placeholder="http://unsplash.com/12542" id="soft_copy_url" name="soft_copy_url" value="" required>
-        </mat-form-field>
-      </div>
+      </div> -->
 
       <div class="row">
+        <mat-label>Book Cover</mat-label>
         <form>
           <input type="file" (change)="onFileSelected($event)" accept="image/*">
         </form>
       </div>
+
+
       <div class="row">
-        <div class="col"><button type="submit" class="btn btn-primary" (click)="addBook()">Add Book</button></div>
+        <div class="col"><button type="submit" class="btn btn-primary" (click)="addBooks()">Add Book</button></div>
       </div>
 
     </form>
