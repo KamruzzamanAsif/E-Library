@@ -1,73 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Users } from '../models/users';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
+
   
-  users: Users[] = [
-    {
-      name: "Swarna Islam",
-      roll: "1214",
-      session: "19-20",
-      program_level: "bsse",
-      batch: "12",
-      mobile_number: "01409614967",
-      address: "keraniganj",
-      email: "bsse1214@iit.du.ac.bd",
-      password: "123"
-    },
-    {
-      name: "Rifah Faria",
-      roll: "1213",
-      session: "19-20",
-      program_level: "bsse",
-      batch: "12",
-      mobile_number: "014xxxxxxxx",
-      address: "Azimpur",
-      email: "bsse1213@iit.du.ac.bd",
-      password: "123"
-    },
-    {
-      name: "Fahad",
-      roll: "1204",
-      session: "19-20",
-      program_level: "bsse",
-      batch: "12",
-      mobile_number: "014xxxxxxxx",
-      address: "Gazipur",
-      email: "bsse1204@iit.du.ac.bd",
-      password: "123"
-    },
-    {
-      name: "Kamruzzaman Asif",
-      roll: "1217",
-      session: "19-20",
-      program_level: "bsse",
-      batch: "12",
-      mobile_number: "014xxxxxxxx",
-      address: "Puran Dhaka",
-      email: "bsse1217@iit.du.ac.bd",
-      password: "123"
-    }
-  ]
+  users: Users[] = [];
 
   userToBeViewd: Users = new Users();
 
 
-  getUsers(): Users[] {
-    return this.users;
+  getUsers(): any {
+    return this.apiService.allUsers();
   }
 
   getUserToBeViewed(): Users {
     return this.userToBeViewd;
   }
 
-  setUserToBeViewed(index: number): void {
-    let user = this.users[index];
+  setUserToBeViewed(user: Users): void {
     if (user != null) {
       this.userToBeViewd = user;
     }
@@ -80,7 +36,9 @@ export class UsersService {
       }
     }
   }
+
   addNewUser(user:Users):void{
     this.users.push(user);
+    console.log("Approved: ",this.users);
   }
 }

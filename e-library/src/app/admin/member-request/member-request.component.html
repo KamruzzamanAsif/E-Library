@@ -72,7 +72,7 @@
       Approve
     </th>
     <td mat-cell *matCellDef="let element">
-        <button mat-raised-button color="primary" *ngIf="element.status==='n/a'" (click)="approveRow(element)">Approve</button>
+        <button mat-raised-button color="primary" *ngIf="element.status==='false'" (click)="approveRow(element)">Approve</button>
     </td>
 </ng-container>
 <ng-container matColumnDef="reject">
