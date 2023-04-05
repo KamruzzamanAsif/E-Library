@@ -1,1 +1,65 @@
-<p>book-request works!</p>
+<section style="margin: 10% auto">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange(sort)"
+    class="mat-elevation-z8">
+
+<!-- Position Column -->
+<ng-container matColumnDef="position">
+ <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+   No.
+ </th>
+ <td mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+</ng-container>
+
+<ng-container matColumnDef="book">
+ <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by book">
+   Book
+ </th>
+ <td mat-cell *matCellDef="let element">
+    <img src="{{element.book.imageUrl}}" alt="">
+    <ul style="list-style: none;">
+        <li>{{element.book.title}}</li>
+        <li>{{element.book.author}}</li>
+        <li>{{element.book.total_quantity}}</li>
+        <li>{{element.book.available_quantity}}</li>
+        <li>{{element.book.category}}</li>
+    </ul>
+ </td>
+</ng-container>
+
+<ng-container matColumnDef="user">
+ <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by user">
+   User
+ </th>
+ <td mat-cell *matCellDef="let element">
+    <ul style="list-style: none;">
+        <li>{{element.user.name}}</li>
+        <li>{{element.user.roll}}</li>
+        <li>{{element.user.batch}}</li>
+        <li>{{element.user.mobile_number}}</li>
+        <li>{{element.user.email}}</li>
+    </ul>
+ </td>
+</ng-container>
+
+<ng-container matColumnDef="approve">
+    <th mat-header-cell *matHeaderCellDef>
+      Approve
+    </th>
+    <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" (click)="approveRow(element)">Approve</button>
+    </td>
+</ng-container>
+<ng-container matColumnDef="reject">
+    <th mat-header-cell *matHeaderCellDef>
+      Reject
+    </th>
+    <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="warn" (click)="rejectRow(element)">Reject</button>
+    </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+</section>
