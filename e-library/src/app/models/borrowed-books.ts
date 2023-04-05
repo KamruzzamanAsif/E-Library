@@ -1,8 +1,4 @@
 export class BorrowedBooks {
-    title: string = "";
-    author: string = "";
-    imageUrl: string = "";
+    bookId:number=0;
     issuedDate:string="";
-    expireDate:string="";
-    borrowDetails:string="";
 }

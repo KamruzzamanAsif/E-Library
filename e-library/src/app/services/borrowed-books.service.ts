@@ -9,44 +9,16 @@ export class BorrowedBooksService {
   constructor() { }
   borrowedBooks: BorrowedBooks[] = [
     {
-      title: 'Discrete Mathematics and Its Applications',
-      author: 'N/A',
-      imageUrl: '../../assets/img/book_cover/discrete_kenneth.png',
-      issuedDate:"02/04/23",
-      expireDate:"06/04/23",
-      borrowDetails:"../../assets/img/discrete-mathematics-and-its-applications-seventh-.pdf"
+      bookId: 5,
+      issuedDate:"02/04/23"
     },
     {
-      title: 'Discrete Mathematics and Its Applications',
-      author: 'N/A',
-      imageUrl: '../../assets/img/book_cover/discrete_kenneth.png',
+      bookId:3,
       issuedDate:"02/04/23",
-      expireDate:"06/04/23",
-      borrowDetails:"../../assets/img/discrete-mathematics-and-its-applications-seventh-.pdf"
     },
     {
-      title: 'Discrete Mathematics and Its Applications',
-      author: 'N/A',
-      imageUrl: '../../assets/img/book_cover/discrete_kenneth.png',
+      bookId:2,
       issuedDate:"02/04/23",
-      expireDate:"06/04/23",
-      borrowDetails:"../../assets/img/discrete-mathematics-and-its-applications-seventh-.pdf"
-    },
-    {
-      title: 'Discrete Mathematics and Its Applications',
-      author: 'N/A',
-      imageUrl: '../../assets/img/book_cover/discrete_kenneth.png',
-      issuedDate:"02/04/23",
-      expireDate:"06/04/23",
-      borrowDetails:"../../assets/img/discrete-mathematics-and-its-applications-seventh-.pdf"
-    },
-    {
-      title: 'Discrete Mathematics and Its Applications',
-      author: 'N/A',
-      imageUrl: '../../assets/img/book_cover/discrete_kenneth.png',
-      issuedDate:"02/04/23",
-      expireDate:"06/04/23",
-      borrowDetails:"../../assets/img/discrete-mathematics-and-its-applications-seventh-.pdf"
     }
   ]
   bookToBeViewed: BorrowedBooks = new BorrowedBooks();

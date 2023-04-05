@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {BookCatalogComponent} from './components/book-catalog/book-catalog.component';
 import {BookDetailsComponent} from './components/book-details/book-details.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 
 import { UsersSettingsComponent } from './admin/users-settings/users-settings.component';
@@ -18,6 +18,7 @@ import { MemberRequestComponent } from './admin/member-request/member-request.co
 import { BookRequestComponent } from './admin/book-request/book-request.component';
 import { BookReturnComponent } from './admin/book-return/book-return.component';
 import { IssuedRecordComponent } from './admin/issued-record/issued-record.component';
+import { BorrowedDetailsComponent } from './user/borrowed-details/borrowed-details.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
@@ -41,7 +42,8 @@ const routes: Routes = [
   {path:"book-request",component:BookRequestComponent},
   {path:"book-return", component:BookReturnComponent},
   {path:"issued-record", component:IssuedRecordComponent},
-  {path:"about",component:AboutComponent}
+  {path:"about",component:AboutComponent},
+  {path:'borrowed-details', component:BorrowedDetailsComponent}
 ];
 
 @NgModule({
