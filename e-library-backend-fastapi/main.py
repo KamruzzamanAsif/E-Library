@@ -173,6 +173,49 @@ async def delete_book(book_id: int):
         return {"message": "Book deleted successfully"}
     
 
+# Define GET endpoint to get all books
+@app.get("/books/all_books", response_model=list[Book])
+async def search_books():
+    # Create cursor object to execute SQL queries
+    db = get_db()
+    cursor = db.cursor()
+
+    # Define SQL command to search for books with the given category
+    sql = "SELECT * FROM book"
+
+    # Execute SQL command to search for books in the database
+    cursor.execute(sql)
+
+    # Get all rows that match the search criteria
+    books = cursor.fetchall()
+
+    # Check if any books were found
+    if len(books) == 0:
+        return JSONResponse(content={"message": "No books found"})
+    else:
+        # Convert the result to a list of dictionaries
+        book_list = []
+        for book in books:
+            book_list.append({
+            "id": book[0],
+            "title": book[1],
+            "author": book[2],
+            "description": book[3],
+            "softcopy": book[4],
+            "shelf": book[5],
+            "total_quantity": book[6],
+            "available_quantity": book[7],
+            "imageUrl": book[8],
+            "softcopyUrl": book[9],
+            "category": book[10]
+        })
+
+        # close db connection
+        cursor.close()
+        db.close()
+        # Return the list of books as a JSON response
+        return book_list
+
 
 # Define GET endpoint to search for books by category
 @app.get("/books/books_by_category/{category}", response_model=list[Book])
