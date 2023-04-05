@@ -35,7 +35,7 @@ def get_db():
     db = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Asif1217*",
+        password="123456",
         database="e_library"
     )
     return db
@@ -60,7 +60,7 @@ async def login(email: str = Body(), password: str = Body()):
         raise HTTPException(
             status_code=401, detail="User is not authorized by admin")
     else:
-        return {"yes"}
+        return {'name': result[0], 'role':result[10]}
 
 
 # Route to create a new user [DONE]
@@ -120,8 +120,9 @@ def forgot_password(email: str):
         db.close()
 
 
-@app.post("/upload-image/")
+@app.post("/upload-image")
 async def upload_image(image: UploadFile = File(...)):
+    
     # Save the image to a local folder named "images"
     file_location = os.path.join("D:/images", image.filename)
     with open(file_location, "wb") as buffer:

@@ -1,20 +1,20 @@
-<div class="entire-page">
-    <div class="content-wrapper">
-        <!-- <ng-container *ngIf="isAdminLoggedIn; else appNav">  -->
+<ng-container *ngIf="getLoginStatus; else appNav">
+    <!-- Render the user-navbar component -->
+    <ng-container *ngIf="isUserLoggedIn; else admin">
+        <app-user-navbar></app-user-navbar>
+    </ng-container>
+    <ng-template #admin>
         <!-- Render the admin-navbar component -->
         <app-admin-navbar></app-admin-navbar>
-        <!-- </ng-container>  -->
+    </ng-template>
+</ng-container>
 
-        <!-- <ng-template #appNav> -->
-        <!-- Render the app-navbar component -->
-        <!-- <app-navbar></app-navbar>  -->
-        <!-- </ng-template> -->
+<ng-template #appNav>
+    <!-- Render the app-navbar component -->
+    <app-navbar></app-navbar>
+</ng-template>
 
-
-        <!-- Render the rest of the content -->
-        <!-- <ngx-ui-loader></ngx-ui-loader>  -->
-        <router-outlet></router-outlet>
-    </div>
-    <app-footer></app-footer>
-
-</div>
+<!-- Render the rest of the content -->
+<ngx-ui-loader></ngx-ui-loader>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

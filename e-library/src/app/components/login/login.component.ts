@@ -4,6 +4,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
 import { GlobalConstants } from 'src/app/shared/global-constant';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,8 +20,9 @@ export class LoginComponent {
     private router: Router,
     private apiService: ApiService,
     private ngxService: NgxUiLoaderService,
-    private snackBarService: SnackBarService
-  ) {}
+    private snackBarService: SnackBarService,
+    private authService: AuthService
+  ) { }
 
   onSubmit() {
     this.ngxService.start();
@@ -33,9 +35,18 @@ export class LoginComponent {
         console.log("RES: ", response);
         this.ngxService.stop();
         this.responseMsg = response?.message;
-        this.snackBarService.openSnackBar('Welcome Admin!', '');
-        localStorage.setItem('token', response?.token);
-        this.router.navigate(['/admin-dashboard']).then(()=>{window.location.reload();});
+        console.log(response.name);
+
+        if (response.role === "admin") {
+          this.snackBarService.openSnackBar('Welcome Admin!', '');
+          localStorage.setItem('token', "admin");
+          this.router.navigate(['/admin-dashboard']).then(() => { window.location.reload(); });
+        } else {
+          this.snackBarService.openSnackBar('Welcome ' + response.name, '');
+          localStorage.setItem('token', "user");
+          this.router.navigate(['/home']).then(() => { window.location.reload(); });
+        }
+
       },
       (error) => {
         console.log("Error: ", error.error.detail)
@@ -49,7 +60,7 @@ export class LoginComponent {
           this.responseMsg,
           GlobalConstants.error
         );
-      }, 
+      },
     );
   }
 }

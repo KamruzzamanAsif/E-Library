@@ -91,13 +91,13 @@
       <div class="row">
         <mat-label>Book Cover</mat-label>
         <form>
-          <input type="file" (change)="onFileSelected($event)" accept="image/*">
+          <input type="file" (change)="onFileSelected($event)" name="image" accept="image/*">
         </form>
       </div>
 
 
       <div class="row">
-        <div class="col"><button type="submit" class="btn btn-primary" (click)="addBooks()">Add Book</button></div>
+        <div class="col"><button type="submit" class="btn btn-primary" (click)="addBooks($event)">Add Book</button></div>
       </div>
 
     </form>

@@ -23,6 +23,8 @@ import { DialogBoxComponent } from './components/dialog-box/dialog-box.component
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { AboutComponent } from './components/about/about.component';
+import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
+import { UserNavbarComponent } from './user/user-navbar/user-navbar.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -50,7 +52,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         LoginComponent,
         CategoryComponent,
         DialogBoxComponent,
-        AboutComponent
+        AboutComponent,
+        UserNavbarComponent
     ],
     providers: [],
     bootstrap: [AppComponent],

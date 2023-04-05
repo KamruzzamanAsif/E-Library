@@ -8,6 +8,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
 import { Router } from '@angular/router';
 import { GlobalConstants } from 'src/app/shared/global-constant';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-book',
@@ -22,6 +23,9 @@ export class AddBookComponent {
   imageSrc: string = '';
   selectedCategory: any;
   responseMsg: string = '';
+  fileToUpload: any;
+  data: any;
+
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -29,6 +33,7 @@ export class AddBookComponent {
     private ngxService: NgxUiLoaderService,
     private snackBarService: SnackBarService,
     private router: Router,
+    private http: HttpClient
   ) { }
 
   options: string[] = ['Data Structure and Algorithms', 'Machine Learning', 'Object Oriented Programming', 'Operating Systm', 'Web Application Development', 'Others'];
@@ -75,10 +80,13 @@ export class AddBookComponent {
   }
 
   onFileSelected(event: any) {
-    const selectedFile = <File>event.target.files[0];
-    console.log(selectedFile.name); // outputs the name of the selected file
-    console.log(selectedFile.type); // outputs the type of the selected file
-    console.log(selectedFile.size); // outputs the size of the selected file
+    // const selectedFile = <File>event.target.files[0];
+    // console.log(selectedFile.name); // outputs the name of the selected file
+    // console.log(selectedFile.type); // outputs the type of the selected file
+    // console.log(selectedFile.size); // outputs the size of the selected file
+
+    this.fileToUpload = <File>event.target.files[0];
+    console.log("FILE: ", this.fileToUpload);
   }
 
   onOptionSelected(option: string) {
@@ -86,28 +94,53 @@ export class AddBookComponent {
     console.log(option); // do something with the selected value
   }
 
+  // onSubmit(event: any): void {
+  //   event.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append('image', this.fileToUpload);
+  //   this.http.post<any>('http://localhost:8000/upload-image', formData).subscribe(
+  //     response => {
+  //       console.log(response.url);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
-
-  addBooks() {
+  addBooks(event: any) {
 
     var bookData = this.books.value;
 
-    var data = {
-      id: bookData.bookID,
-      title: bookData.bookTitle,
-      author: bookData.bookAuthor,
-      description: bookData.description,
-      shelf: bookData.bookShelf,
-      total_quantity: bookData.availableCopies,
-      available_quantity: bookData.availableCopies,
-      imageUrl: 'testing...',
-      softcopyUrl: bookData.softCopyURL,
-      category: this.selectedCategory,
-    }
+    // save image and send to server
+    event.preventDefault();
+    const formData = new FormData();
 
-    console.log(data);
+    formData.append('image', this.fileToUpload, this.fileToUpload.name);
 
-    this.apiService.addBooks(data).subscribe(
+    this.apiService.addImage(formData).subscribe(
+      (response) => {
+
+        this.data = {
+          id: bookData.bookID,
+          title: bookData.bookTitle,
+          author: bookData.bookAuthor,
+          description: bookData.description,
+          shelf: bookData.bookShelf,
+          total_quantity: bookData.availableCopies,
+          available_quantity: bookData.availableCopies,
+          imageUrl: "D:\\images\\" + this.fileToUpload.name,
+          softcopyUrl: bookData.softCopyURL,
+          category: this.selectedCategory,
+        }
+
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    this.apiService.addBooks(this.data).subscribe(
       (response: any) => {
         console.log("RES: ", response);
         this.ngxService.stop();
