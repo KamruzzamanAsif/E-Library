@@ -10,22 +10,29 @@ import { BookCatalogService } from '../../services/book-catalog.service';
 })
 export class CategoryComponent {
   category: string = "";
-  books: Book[] = []
+  allBooks: Book[] = [];
+  books: Book[] = [];
   constructor(private route: ActivatedRoute, private bookService: BookCatalogService, private router:Router) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.books = [];
-      this.category = params['category'];
-      let book = this.bookService.getBooks();
+    this.bookService.getBooks().subscribe((books: Book[]) => {
+      this.allBooks = books;
+      console.log(this.allBooks);
+    });
 
-      for (let i = 0; i < book.length; i++) {
-        if (book[i].category === this.category) {
-          this.books.push(book[i]);
-        }
+    this.route.queryParams.subscribe(params => {
+      var currentCategory = params['category'];
+
+
+      for (let i = 0; i < this.allBooks.length; i++) {
+        if (this.allBooks[i].category === "Data Structure and Algorithms" && currentCategory === "dsa") {
+          this.books.push(this.allBooks[i]);
+        } 
       }
+
     });
   }
+
   viewDetails(index: number): void{
     var book = this.books[index];
     this.bookService.setBookToBeViewed(book);

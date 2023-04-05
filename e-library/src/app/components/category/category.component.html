@@ -1,7 +1,7 @@
 <section style="margin: 10%;" class="services">
     <div class="container">
         <div class="row">
-            <div class="col-sm-3 icon-box" *ngFor="let book of books; let i=index" data-aos="fade-up" (click)="viewDetails(i)">
+            <div class="col-sm-3 icon-box" *ngFor="let book of allBooks; let i=index" data-aos="fade-up" (click)="viewDetails(i)">
                 <img [src]="book.imageUrl" alt="{{book.title}}">
                 <h2>{{book.title}}</h2>
                 <p>Author: {{book.author}}</p>
