@@ -35,7 +35,7 @@ def get_db():
     db = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="123456",
+        password="Asif1217*",
         database="e_library"
     )
     return db
@@ -501,48 +501,7 @@ def get_all_users():
         return user_list
     
 
-    # MySQL Connection
-    db = get_db()
-    cursor = db.cursor()
-
-    # Query
-    query = "SELECT * FROM user"
-    
-    # Execute Query
-    cursor.execute(query)
-
-    # Get all rows that match the search criteria
-    users = cursor.fetchall()
-
-    # Check if any users were found
-    if len(users) == 0:
-        return JSONResponse(content={"message": "No unapproved users found"})
-    else:
-        # Convert the result to a list of User objects
-        user_list = []
-        for user in users:
-            user_list.append({
-                "id": user[0],
-                "name": user[1],
-                "roll": user[2],
-                "batch": user[3],
-                "session": user[4],
-                "program_level": user[5],
-                "mobile_number": user[6],
-                "address": user[7],
-                "email": user[8],
-                "password": user[9],
-                "status": user[10],
-                "role": user[11]
-            })
-
-        # Close the database connection
-        cursor.close()
-        db.close()
-
-        # Return the list of unapproved users as a JSON response
-        return user_list
-    
+   
 
 # Approve a user [DONE]
 @app.post("/users/verify_user")
@@ -638,6 +597,32 @@ def get_book_lendings():
         # Return the list of book lendings as a JSON response
         return book_lendings_list
 
+
+# Request a book for lending
+@app.post("/books/request_a_book")
+def request_a_book(user_email: str, book_id: int):
+    # MySQL Connection
+    db = get_db()
+    cursor = db.cursor()
+
+    # Query
+    query = "INSERT INTO book_lending (user_email, book_id) VALUES (%s, %s)"
+    
+    # Data
+    data = (user_email, book_id)
+
+    # Execute Query
+    cursor.execute(query, data)
+
+    # Commit the transaction
+    db.commit()
+
+    # Close the database connection
+    cursor.close()
+    db.close()
+
+    # Return a success message
+    return JSONResponse(content={"message": "Book requested successfully"})
 
 
 # Add a new book lending record

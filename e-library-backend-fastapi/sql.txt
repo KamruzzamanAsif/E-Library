@@ -45,7 +45,7 @@ VALUES ('2', 'The Da Vinci Code', 'Dan Brown', 'A thriller about a conspiracy in
 CREATE TABLE book_lending (
     user_email VARCHAR(255) NOT NULL,
     book_id INT NOT NULL,
-    borrow_date DATE NOT NULL,
+    borrow_date DATE,
     return_date DATE,
     PRIMARY KEY (user_email, book_id),
     FOREIGN KEY (user_email) REFERENCES user(email),
