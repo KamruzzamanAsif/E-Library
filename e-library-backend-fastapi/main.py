@@ -1,5 +1,5 @@
 from model import User, Book, BookLending
-
+import os
 from fastapi import Body, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.params import Depends
@@ -9,7 +9,7 @@ import mysql.connector
 import smtplib
 from email.mime.text import MIMEText
 from fastapi.responses import JSONResponse
-
+from fastapi import FastAPI, File, UploadFile
 
 
 app = FastAPI()
@@ -35,7 +35,7 @@ def get_db():
     db = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="123456",
+        password="Asif1217*",
         database="e_library"
     )
     return db
@@ -119,6 +119,18 @@ def forgot_password(email: str):
         cursor.close()
         db.close()
 
+
+@app.post("/upload-image/")
+async def upload_image(image: UploadFile = File(...)):
+    # Save the image to a local folder named "images"
+    file_location = os.path.join("D:/images", image.filename)
+    with open(file_location, "wb") as buffer:
+        buffer.write(image.file.read())
+
+    # Return the URL of the saved image
+    return {"url": f"D:\images\{image.filename}"}
+
+
 # [DONE]
 @app.post("/add-books")
 def add_book(book: Book):
@@ -136,6 +148,7 @@ def add_book(book: Book):
     finally:
         cursor.close()
         db.close()
+
 
 
 @app.put("/books/{book_id}")
