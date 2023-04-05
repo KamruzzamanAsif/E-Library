@@ -21,7 +21,8 @@ import { AddBookComponent } from './add-book/add-book.component';
 import {MatIconModule} from '@angular/material/icon';
 import { MemberRequestComponent } from './member-request/member-request.component';
 import { BookRequestComponent } from './book-request/book-request.component';
-import { BookReturnComponent } from './book-return/book-return.component'
+import { BookReturnComponent } from './book-return/book-return.component';
+import { IssuedRecordComponent } from './issued-record/issued-record.component'
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { BookReturnComponent } from './book-return/book-return.component'
     MemberRequestComponent,
     BookRequestComponent,
     BookReturnComponent,
+    IssuedRecordComponent,
   ],
   imports: [
     CommonModule,

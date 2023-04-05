@@ -17,6 +17,7 @@ import { AddBookComponent } from './admin/add-book/add-book.component';
 import { MemberRequestComponent } from './admin/member-request/member-request.component';
 import { BookRequestComponent } from './admin/book-request/book-request.component';
 import { BookReturnComponent } from './admin/book-return/book-return.component';
+import { IssuedRecordComponent } from './admin/issued-record/issued-record.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
 import { AppComponent } from './app.component';
 
@@ -37,7 +38,8 @@ const routes: Routes = [
   {path:"add-book",component:AddBookComponent},
   {path:"member-request", component:MemberRequestComponent},
   {path:"book-request",component:BookRequestComponent},
-  {path:"book-return", component:BookReturnComponent}
+  {path:"book-return", component:BookReturnComponent},
+  {path:"issued-record", component:IssuedRecordComponent}
 ];
 
 @NgModule({
