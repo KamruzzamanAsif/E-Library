@@ -8,7 +8,7 @@ import { BookCatalogComponent } from './components/book-catalog/book-catalog.com
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
