@@ -1,4 +1,4 @@
-
+import { DomSanitizer } from '@angular/platform-browser';
 import { BookCatalogService } from './../../services/book-catalog.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -11,15 +11,21 @@ import { Book } from '../../models/book';
   styleUrls: ['./book-catalog.component.css']
 })
 export class BookCatalogComponent implements OnInit{
-  constructor(private bookCatalogService: BookCatalogService, private router: Router) {}
+  constructor(private bookCatalogService: BookCatalogService, private router: Router, private domSanitizer: DomSanitizer) {}
 
   books: Book[] = [];
   catalogSize: number = 0;
+  url: any;
+
+  sanitizeImageUrl(url: string) {
+    console.log("Sanitization is on...")
+    return this.domSanitizer.bypassSecurityTrustUrl(url);
+  }
+  
 
   ngOnInit(): void{
     this.books = this.bookCatalogService.getBooks().subscribe((books: Book[]) => {
       this.books = books;
-      console.log(this.books);
     });
     this.catalogSize = this.books.length;
   }

@@ -60,12 +60,12 @@ async def login(email: str = Body(), password: str = Body()):
         raise HTTPException(
             status_code=401, detail="User is not authorized by admin")
     else:
-        return {'name': result[0], 'role':result[10]}
+        return {'name': result[0], 'role': result[10]}
 
 
 # Route to create a new user [DONE]
 @app.post("/signup")
-async def signup(user: str = Body(), db: mysql.connector.connection.MySQLConnection = Depends(get_db)):
+async def signup(user: User, db: mysql.connector.connection.MySQLConnection = Depends(get_db)):
     # Check if the username or email is already in use
     print("RESULT: ", user)
     cursor = db.cursor()
@@ -84,7 +84,6 @@ async def signup(user: str = Body(), db: mysql.connector.connection.MySQLConnect
         return {"User created successfully"}
 
 
-
 @app.post("/forgot_password")
 def forgot_password(email: str):
     try:
@@ -96,7 +95,8 @@ def forgot_password(email: str):
             raise HTTPException(status_code=404, detail="User not found")
         # generate a new password and update the database
         new_password = "my_new_password"
-        cursor.execute("UPDATE user SET password = %s WHERE email = %s", (new_password, email))
+        cursor.execute(
+            "UPDATE user SET password = %s WHERE email = %s", (new_password, email))
         db.commit()
         # send an email to the user with the new password
         msg = MIMEText(f"Your new password is {new_password}")
@@ -122,14 +122,15 @@ def forgot_password(email: str):
 
 @app.post("/upload-image")
 async def upload_image(image: UploadFile = File(...)):
-    
+
     # Save the image to a local folder named "images"
-    file_location = os.path.join("D:/images", image.filename)
+    file_location = os.path.join(
+        "C:/Users/Fahad/Desktop/e-library/src/assets/img", image.filename)
     with open(file_location, "wb") as buffer:
         buffer.write(image.file.read())
 
     # Return the URL of the saved image
-    return {"url": f"D:\images\{image.filename}"}
+    return {"url": f"assets\img\{image.filename}"}
 
 
 # [DONE]
@@ -139,7 +140,8 @@ def add_book(book: Book):
         db = get_db()
         cursor = db.cursor()
         sql = "INSERT INTO book (id, title, author, description, shelf, total_quantity, available_quantity, imageUrl, softcopyUrl, category) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        values = (book.id, book.title, book.author, book.description, book.shelf, book.total_quantity, book.available_quantity, book.imageUrl, book.softcopyUrl, book.category)
+        values = (book.id, book.title, book.author, book.description, book.shelf, book.total_quantity,
+                  book.available_quantity, book.imageUrl, book.softcopyUrl, book.category)
         cursor.execute(sql, values)
         db.commit()
         return {"message": "Book added successfully"}
@@ -149,7 +151,6 @@ def add_book(book: Book):
     finally:
         cursor.close()
         db.close()
-
 
 
 @app.put("/books/{book_id}")
@@ -164,7 +165,8 @@ def update_book(book_id: str, book: Book):
             raise HTTPException(status_code=404, detail="Book not found")
         # update the book in the database
         sql = "UPDATE book SET id= %s, title = %s, author = %s, description = %s, shelf = %s, total_quantity = %s, available_quantity = %s, imageUrl = %s, softcopyUrl = %s, category = %s WHERE id = %s"
-        values = (book.id, book.title, book.author, book.description, book.shelf, book.total_quantity, book.available_quantity, book.imageUrl, book.softcopyUrl, book.category, book_id)
+        values = (book.id, book.title, book.author, book.description, book.shelf, book.total_quantity,
+                  book.available_quantity, book.imageUrl, book.softcopyUrl, book.category, book_id)
         cursor.execute(sql, values)
         db.commit()
         return {"message": "Book updated successfully"}
@@ -195,7 +197,7 @@ async def delete_book(book_id: str):
         return {"message": "Book not found"}
     else:
         return {"message": "Book deleted successfully"}
-    
+
 
 # Define GET endpoint to get all books
 @app.get("/books/all_books", response_model=list[Book])
@@ -221,17 +223,17 @@ async def search_books():
         book_list = []
         for book in books:
             book_list.append({
-            "id": book[0],
-            "title": book[1],
-            "author": book[2],
-            "description": book[3],
-            "shelf": book[4],
-            "total_quantity": book[5],
-            "available_quantity": book[6],
-            "imageUrl": book[7],
-            "softcopyUrl": book[8],
-            "category": book[9]
-        })
+                "id": book[0],
+                "title": book[1],
+                "author": book[2],
+                "description": book[3],
+                "shelf": book[4],
+                "total_quantity": book[5],
+                "available_quantity": book[6],
+                "imageUrl": book[7],
+                "softcopyUrl": book[8],
+                "category": book[9]
+            })
 
         # close db connection
         cursor.close()
@@ -265,25 +267,25 @@ async def search_books(category: str):
         book_list = []
         for book in books:
             book_list.append({
-            "id": book[0],
-            "title": book[1],
-            "author": book[2],
-            "description": book[3],
-            "softcopy": book[4],
-            "shelf": book[5],
-            "total_quantity": book[6],
-            "available_quantity": book[7],
-            "imageUrl": book[8],
-            "softcopyUrl": book[9],
-            "category": book[10]
-        })
+                "id": book[0],
+                "title": book[1],
+                "author": book[2],
+                "description": book[3],
+                "softcopy": book[4],
+                "shelf": book[5],
+                "total_quantity": book[6],
+                "available_quantity": book[7],
+                "imageUrl": book[8],
+                "softcopyUrl": book[9],
+                "category": book[10]
+            })
 
         # close db connection
         cursor.close()
         db.close()
         # Return the list of books as a JSON response
         return book_list
-    
+
 
 # Search by Author Endpoint
 @app.get("/books/books_by_author/{author}", response_model=list[Book])
@@ -310,25 +312,25 @@ def search_books_by_author(author: str):
         book_list = []
         for book in books:
             book_list.append({
-            "id": book[0],
-            "title": book[1],
-            "author": book[2],
-            "description": book[3],
-            "softcopy": book[4],
-            "shelf": book[5],
-            "total_quantity": book[6],
-            "available_quantity": book[7],
-            "imageUrl": book[8],
-            "softcopyUrl": book[9],
-            "category": book[10]
-        })
+                "id": book[0],
+                "title": book[1],
+                "author": book[2],
+                "description": book[3],
+                "softcopy": book[4],
+                "shelf": book[5],
+                "total_quantity": book[6],
+                "available_quantity": book[7],
+                "imageUrl": book[8],
+                "softcopyUrl": book[9],
+                "category": book[10]
+            })
 
         # close db connection
         cursor.close()
         db.close()
         # Return the list of books as a JSON response
         return book_list
-    
+
 
 # Search by Book Name Endpoint
 @app.get("/books/books_by_name/{book_name}", response_model=list[Book])
@@ -355,25 +357,24 @@ def search_books_by_name(book_name: str):
         book_list = []
         for book in books:
             book_list.append({
-            "id": book[0],
-            "title": book[1],
-            "author": book[2],
-            "description": book[3],
-            "softcopy": book[4],
-            "shelf": book[5],
-            "total_quantity": book[6],
-            "available_quantity": book[7],
-            "imageUrl": book[8],
-            "softcopyUrl": book[9],
-            "category": book[10]
-        })
+                "id": book[0],
+                "title": book[1],
+                "author": book[2],
+                "description": book[3],
+                "softcopy": book[4],
+                "shelf": book[5],
+                "total_quantity": book[6],
+                "available_quantity": book[7],
+                "imageUrl": book[8],
+                "softcopyUrl": book[9],
+                "category": book[10]
+            })
 
         # close db connection
         cursor.close()
         db.close()
         # Return the list of books as a JSON response
         return book_list
-
 
 
 # Get all unapproved users [DONE]
@@ -385,13 +386,13 @@ def get_unapproved_users():
 
     # Query
     query = "SELECT * FROM user WHERE status = 'false'"
-    
+
     # Execute Query
     cursor.execute(query)
 
     # Get all rows that match the search criteria
     unapproved_users = cursor.fetchall()
-    
+
     # Check if any users were found
     if len(unapproved_users) == 0:
         return JSONResponse(content={"message": "No unapproved users found"})
@@ -419,7 +420,7 @@ def get_unapproved_users():
 
         # Return the list of unapproved users as a JSON response
         return unapproved_user_list
-    
+
 
 # Get all approved users
 @app.get("/users/approved", response_model=list[User])
@@ -430,13 +431,13 @@ def get_approved_users():
 
     # Query
     query = "SELECT * FROM user WHERE status = 'true'"
-    
+
     # Execute Query
     cursor.execute(query)
 
     # Get all rows that match the search criteria
     approved_users = cursor.fetchall()
-    
+
     # Check if any users were found
     if len(approved_users) == 0:
         return JSONResponse(content={"message": "No approved users found"})
@@ -476,7 +477,7 @@ def get_all_users():
 
     # Query
     query = "SELECT * FROM user where role not in ('admin')"
-    
+
     # Execute Query
     cursor.execute(query)
 
@@ -507,19 +508,17 @@ def get_all_users():
         # Close the database connection
         cursor.close()
         db.close()
-        
+
         print(user_list)
 
         # Return the list of unapproved users as a JSON response
         return user_list
-    
 
-   
 
 # Approve a user [DONE]
 @app.post("/users/verify_user")
 def verify_user(user_email: str = Body(), status: str = Body()):
-    
+
     print(user_email, status)
     # MySQL Connection
     db = get_db()
@@ -536,8 +535,9 @@ def verify_user(user_email: str = Body(), status: str = Body()):
 
     # If no user found with the specified email and false status, raise an exception
     if user is None:
-        raise HTTPException(status_code=404, detail="User not found or already approved")
-    
+        raise HTTPException(
+            status_code=404, detail="User not found or already approved")
+
     if status == "true":
 
         # If user found, update the status to true
@@ -551,9 +551,9 @@ def verify_user(user_email: str = Body(), status: str = Body()):
 
         # Return  as a JSON response
         return {"message": f"User with email {user_email} has been approved."}
-    
+
     else:
-        
+
         # If user found, update the status to true
         query = "DELETE from user WHERE email = %s"
         print(cursor.execute(query, (user_email,)))
@@ -562,11 +562,8 @@ def verify_user(user_email: str = Body(), status: str = Body()):
         # Close the database connection
         cursor.close()
         db.close()
-        
+
         return {"message": f"User with email {user_email} has been rejected."}
-
-
-
 
 
 ######################    BOOK LENDING SECTION STARTS #################
@@ -581,7 +578,7 @@ def get_book_lendings():
 
     # Query
     query = "SELECT * FROM book_lending"
-    
+
     # Execute Query
     cursor.execute(query)
 
@@ -595,17 +592,25 @@ def get_book_lendings():
         # Convert the result to a list of BookLending objects
         book_lendings_list = []
         for book_lending in book_lendings:
-            book_lending_obj = BookLending(
-                user_email=book_lending[0],
-                book_id=book_lending[1],
-                borrow_date=str(book_lending[2]),
-                return_date=str(book_lending[3])
-            )
+            # book_lending_obj = BookLending(
+            #     user_email=book_lending[1],
+            #     book_id=book_lending[2],
+            #     borrow_date=str(book_lending[3]),
+            #     return_date=str(book_lending[4])
+            # )
+            book_lending_obj = {
+                'user_email' : book_lending[1],
+                'book_id' : book_lending[2],
+                'borrow_date' : str(book_lending[3]),
+                'return_date' : str(book_lending[4])
+            }
             book_lendings_list.append(book_lending_obj)
 
         # Close the database connection
         cursor.close()
         db.close()
+
+        print(book_lendings_list)
 
         # Return the list of book lendings as a JSON response
         return book_lendings_list
@@ -613,14 +618,14 @@ def get_book_lendings():
 
 # Request a book for lending
 @app.post("/books/request_a_book")
-def request_a_book(user_email: str, book_id: int):
+def request_a_book(user_email: str = Body(), book_id: str = Body()):
     # MySQL Connection
     db = get_db()
     cursor = db.cursor()
 
     # Query
     query = "INSERT INTO book_lending (user_email, book_id) VALUES (%s, %s)"
-    
+
     # Data
     data = (user_email, book_id)
 
@@ -635,28 +640,38 @@ def request_a_book(user_email: str, book_id: int):
     db.close()
 
     # Return a success message
-    return JSONResponse(content={"message": "Book requested successfully"})
+    return JSONResponse(content={"message": "Book request successful. Wait for admin approval"})
 
 
 # Add a new book lending record
 @app.post("/books/lend_a_book")
-def lend_a_book(user_email: str, book_id: int, borrow_date: str):
+def lend_a_book(user_email: str = Body(), book_id: str = Body(), borrow_date: str = Body()):
+    
+    print(user_email, book_id, borrow_date, type(borrow_date))
     # MySQL Connection
     db = get_db()
     cursor = db.cursor()
 
     # Query
-    query = "INSERT INTO book_lending (user_email, book_id, borrow_date) VALUES (%s, %s, %s)"
-    
-    # Data
-    data = (user_email, book_id, borrow_date)
+    # query = "INSERT INTO book_lending (user_email, book_id, borrow_date) VALUES (%s, %s, %s)"
+    query = "UPDATE book_lending SET user_email = %s, borrow_date = %s WHERE book_id = %s"
+    data = (user_email, borrow_date, book_id)
 
     # Execute Query
     cursor.execute(query, data)
 
+    # Get the current available quantity of the book
+    cursor.execute(
+        "SELECT available_quantity FROM book WHERE id = %s", (book_id,))
+    result = cursor.fetchone()
+
     # Commit the transaction
     # update the book availability
-    cursor.execute("UPDATE book SET available_quantity = available_quantity - 1 WHERE id = %s", (book_id,))
+    if result and result[0] > 0:
+        # Update the available quantity if it's greater than 0
+        cursor.execute(
+            "UPDATE book SET available_quantity = available_quantity - 1 WHERE id = %s", (book_id,))
+
     db.commit()
 
     # Close the database connection
@@ -667,21 +682,29 @@ def lend_a_book(user_email: str, book_id: int, borrow_date: str):
     return {"message": "Book lending added successfully"}
 
 
-
 # Add a new book return record
 @app.post("/books/return_a_book")
-def return_a_book(user_email: str, book_id: int, return_date: str):
+def return_a_book(user_email: str = Body(), book_id: str = Body(), return_date: str = Body()):
+    
+    print(user_email, book_id, type(return_date), return_date)
     # MySQL Connection
     db = get_db()
     cursor = db.cursor()
+    
+    query = "UPDATE book_lending SET return_date = %s WHERE book_id = %s AND user_email = %s"
+    data = (return_date, book_id, user_email)
+
+    # Execute Query
+    cursor.execute(query, data)
 
     # Query
-    cursor.execute("UPDATE book_lending SET return_date = %s WHERE book_id = %s AND user_email = %s", (return_date, book_id, user_email))
-    
+    # cursor.execute("UPDATE book_lending SET return_date = %s WHERE book_id = %s AND user_email = %s",
+    #                (return_date, book_id, user_email))
 
     # Commit the transaction
     # update the book availability
-    cursor.execute("UPDATE book SET available_quantity = available_quantity + 1 WHERE id = %s", (book_id,))
+    cursor.execute(
+        "UPDATE book SET available_quantity = available_quantity + 1 WHERE id = %s", (book_id,))
     db.commit()
 
     # Close the database connection
@@ -693,5 +716,3 @@ def return_a_book(user_email: str, book_id: int, return_date: str):
 
 
 ######################### BOOK LENDING SECTION ENDS #########################
-
-

@@ -1,7 +1,7 @@
 <section style="margin-top: 10%;">
   <div class="book-details">
     <div class="book-image">
-      <img src="{{book.imageUrl}}" alt="{{book.title}}">
+      <img [src]="sanitizeImageUrl(book.imageUrl)" alt="{{book.title}}">
     </div>
     <div class="book-info">
       <h2 class="book-title">{{book.title}}</h2>

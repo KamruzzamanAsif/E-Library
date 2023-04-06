@@ -94,20 +94,6 @@ export class AddBookComponent {
     console.log(option); // do something with the selected value
   }
 
-  // onSubmit(event: any): void {
-  //   event.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append('image', this.fileToUpload);
-  //   this.http.post<any>('http://localhost:8000/upload-image', formData).subscribe(
-  //     response => {
-  //       console.log(response.url);
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-
   addBooks(event: any) {
 
     var bookData = this.books.value;

@@ -2,7 +2,7 @@
 
 <div id="book-catalog">
   <div class="book" *ngFor="let book of books.slice(0, catalogSize); let i=index">
-    <img (click)="viewDetails(i)" [src]="book.imageUrl" alt="{{book.title}}">
+    <img (click)="viewDetails(i)" [src]="sanitizeImageUrl(book.imageUrl)" alt="{{book.title}}">
     <h2>{{book.title}}</h2>
     <p>Author: {{book.author}}</p>
     <p>Softcopy: {{book.softCopyUrl}}</p>
